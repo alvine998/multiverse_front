@@ -67,3 +67,7 @@ a {
   height: 100px;
   background-color: lightgreen;
 }
+
+.pl-5{
+  padding-left: 70px;
+}
