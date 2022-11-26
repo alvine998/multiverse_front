@@ -71,3 +71,11 @@ a {
 .pl-5{
   padding-left: 70px;
 }
+
+.bg-landing{
+  background-image: url('../assets/images/landing.png');
+  height: 120vh;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
