@@ -82,7 +82,7 @@ export default function Home() {
             <div className='d-flex justify-content-center gap-3'>
               {
                 provides?.filter((v: any, i: number) => i < 3)?.map((val: any) => (
-                  <div className='box-provide'>
+                  <div key={i} className='box-provide'>
                     <div style={{ marginTop: -30 }}>
                       <Image alt='v' src={val?.icon} width={70} height={70} />
                     </div>
@@ -94,7 +94,7 @@ export default function Home() {
             <div className='d-flex justify-content-center gap-3'>
               {
                 provides?.filter((v: any, i: number) => i > 2)?.map((val: any) => (
-                  <div className='box-provide'>
+                  <div key={i} className='box-provide'>
                     <div style={{ marginTop: -30 }}>
                       <Image alt='v' src={val?.icon} width={70} height={70} />
                     </div>
@@ -116,7 +116,7 @@ export default function Home() {
               </h2>
               <div className='d-flex justify-content-center gap-3' style={{ marginTop: 100 }}>
                 {
-                  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]?.map((v: any) => <div className='dotted' />)
+                  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]?.map((v: any) => <div key={v} className='dotted' />)
                 }
               </div>
             </div>
