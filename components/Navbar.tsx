@@ -2,19 +2,19 @@ import React from 'react'
 
 export default function Navbar({children}:any) {
     return (
-        <div>
+        <div className='z-2 pt-3 pe-5'>
             <ul className="nav justify-content-end">
                 <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="#">Active</a>
+                    <a className="nav-link active text-white fw-bold fs-5" aria-current="page" href="#">HOME</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#">Link</a>
+                    <a className="nav-link text-white fw-bold fs-5" href="#info">ABOUT</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#">Link</a>
+                    <a className="nav-link text-white fw-bold fs-5" href="#">PRODUCT</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link disabled" href="#" aria-disabled="true">Disabled</a>
+                    <a className="nav-link disabled text-white fw-bold fs-5" href="#" aria-disabled="true">CONTACT</a>
                 </li>
             </ul>
             <div>
