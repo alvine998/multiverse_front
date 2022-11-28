@@ -82,7 +82,7 @@ export default function Home() {
             <div className='d-flex justify-content-center gap-3'>
               {
                 provides?.filter((v: any, i: number) => i < 3)?.map((val: any) => (
-                  <div key={i} className='box-provide'>
+                  <div key={val} className='box-provide'>
                     <div style={{ marginTop: -30 }}>
                       <Image alt='v' src={val?.icon} width={70} height={70} />
                     </div>
@@ -94,7 +94,7 @@ export default function Home() {
             <div className='d-flex justify-content-center gap-3'>
               {
                 provides?.filter((v: any, i: number) => i > 2)?.map((val: any) => (
-                  <div key={i} className='box-provide'>
+                  <div key={val} className='box-provide'>
                     <div style={{ marginTop: -30 }}>
                       <Image alt='v' src={val?.icon} width={70} height={70} />
                     </div>
