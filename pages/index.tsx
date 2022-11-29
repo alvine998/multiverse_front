@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { bestprice, brand, customerreview, customerservice, deliverytime, landing, quality } from '../assets'
+import { alcohol, bestprice, brand, charcoal, customerreview, customerservice, deliverytime, indomap, landing, panthenol, quality } from '../assets'
 import Navbar from '../components/Navbar'
 import styles from '../styles/Home.module.css'
 
@@ -35,10 +35,45 @@ export default function Home() {
     },
   ]
 
+  const products = [
+    {
+      id: 1,
+      title: 'Food Materials',
+      image: panthenol
+    },
+    {
+      id: 2,
+      title: 'Chemical Product',
+      image: alcohol
+    },
+    {
+      id: 3,
+      title: 'Cosmetic Ingredients',
+      image: charcoal
+    },
+  ]
+
+  const testimonials = [
+    {
+      id: 1,
+      title: 'Fast respond, fast delivery, good quality materials',
+      from: 'PT Lunar Mas'
+    },
+    {
+      id: 2,
+      title: 'Good quality and products',
+      from: 'PT Ventura Apache'
+    },
+    {
+      id: 3,
+      title: 'The products was really nice',
+      from: 'PT Abadi Lentera'
+    },
+  ]
+
   const [count, setCount] = useState(0)
 
   useEffect(() => {
-    setCount(0)
   }, [count])
   return (
     <div>
@@ -60,25 +95,27 @@ export default function Home() {
               <p className='text-purple2'>The Best Raw Material You Can Get!</p>
               <h1>
                 Importers & Distributors
-                <br/>
+                <br />
                 In The Chemical Industries
               </h1>
               <p className='fs-4'>
-                Provide our customers with the best chemical <br/>
-                products at the best possible market price <br/>
+                Provide our customers with the best chemical <br />
+                products at the best possible market price <br />
                 without compromising quality.
               </p>
             </div>
           </div>
         </div>
-        <div className='bg-default'>
+        <div className='bg-default' id="product">
           <h1 className='text-center'>Products Gallery</h1>
           <div className='d-flex justify-content-between px-5'>
             {
-              [{ name: "Food Materials" }, { name: "Chemical Product" }, { name: "Cosmetic Ingredients" }]?.map((v: any) => (
+              products?.map((v: any) => (
                 <div key={v}>
-                  <div className='box' />
-                  <p className='text-center'>{v?.name?.toUpperCase()}</p>
+                  <div className='box'>
+                    <Image style={{ borderRadius: '20px' }} src={v?.image} alt="products" width={300} height={200} />
+                  </div>
+                  <p className='text-center fs-5 fw-bold mt-2'>{v?.title?.toUpperCase()}</p>
                 </div>
               ))
             }
@@ -120,35 +157,85 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Vission & Mission */}
+        <div className='bg-default'>
+          <div className='d-flex flex-column align-items-center'>
+            <div className='box-title'>
+              <h5 className='text-center text-white'>Our Vision & Mission</h5>
+            </div>
+            <div className='box-vm mt-3'>
+              <p className='text-center px-2'>
+                Recognized as the leader of chemical raw materials distribution
+                industry by all related industry players.
+              </p>
+            </div>
+            <div className='d-flex flex-row justify-content-around gap-5'>
+              <div className='box-vm mt-3'>
+                <p className='text-center px-2'>
+                  Deliver superior quality chemical products that contribute
+                  positive impact to our customer's business growth.
+                </p>
+              </div>
+              <div className='box-vm mt-3'>
+                <p className='text-center px-2'>
+                  Forging meaningful, lifelong engagement and partnership with our
+                  customer through customer centric offer.
+                </p>
+              </div>
+            </div>
+          </div>
+          <h5 className='mt-4 text-center'>We supply on a nationwide</h5>
+          <div className='d-flex justify-content-center'>
+            <Image alt='maps' src={indomap} />
+          </div>
+        </div>
+
         {/* Testimonial */}
         <div id='testi' className='bg-default'>
           <div className='d-flex justify-content-between gap-5'>
             <div>
               <p className='fs-5 fw-bold'>Testimonial</p>
               <h2>
-                What Customer Say About Us.
+                What Customer Say <br />About Us.
               </h2>
               <div className='d-flex justify-content-center gap-3' style={{ marginTop: 100 }}>
                 {
-                  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]?.map((v: any) => <div key={v} className='dotted' />)
+                  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]?.map((v: any) => <div key={v} className='dotted' />)
                 }
               </div>
             </div>
             <div>
               <div className='box-testi'>
-                <p className='text-slide'>{provides[count]?.title}</p>
+                <p className='text-slide'>{testimonials[count]?.title}</p>
+                <p className='text-slide'>{testimonials[count]?.from}</p>
+                <div className='d-flex justify-content-around'>
+                  <div></div>
+                  {/* <a className='text-primary' href='#previous' onClick={() => {
+                    if (count < testimonials?.length - 1) {
+                      setCount(count - 1)
+                      console.log(count, 'countes')
+                      return
+                    }
+                    else if (count < 0) {
+                      setCount(0)
+                      return
+                    }
+                  }}>
+                    Previous
+                  </a> */}
+                  <a className='text-primary' href='#next' onClick={() => {
+                    if (count < testimonials?.length - 1) {
+                      setCount(count + 1)
+                      console.log(count, 'countes')
+                      return
+                    } else {
+                      setCount(0)
+                    }
+                  }}>
+                    Next
+                  </a>
+                </div>
               </div>
-            </div>
-            <div>
-              <button className='btn btn-primary' onClick={() => {
-                if (count < provides?.length - 1) {
-                  setCount(count + 1)
-                  console.log(count, 'countes')
-                  return
-                } else {
-                  setCount(0)
-                }
-              }}>Next</button>
             </div>
           </div>
         </div>

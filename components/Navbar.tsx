@@ -8,10 +8,10 @@ export default function Navbar({children}:any) {
                     <a className="nav-link active text-white fw-bold fs-5" aria-current="page" href="#">HOME</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link text-white fw-bold fs-5" href="#info">ABOUT</a>
+                    <a className="nav-link text-white fw-bold fs-5" href="#about">ABOUT</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link text-white fw-bold fs-5" href="#">PRODUCT</a>
+                    <a className="nav-link text-white fw-bold fs-5" href="#product">PRODUCT</a>
                 </li>
                 <li className="nav-item">
                     <a className="nav-link disabled text-white fw-bold fs-5" href="#" aria-disabled="true">CONTACT</a>

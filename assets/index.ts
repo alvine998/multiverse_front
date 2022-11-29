@@ -7,6 +7,10 @@ import customerservice from './images/customer-service.png'
 import quality from './images/quality.png'
 import deliverytime from './images/delivery-time.png'
 import brand from './images/brand.png'
+import alcohol from './images/alcohol.png'
+import charcoal from './images/charcoal.jpg'
+import panthenol from './images/panthenol.jpg'
+import indomap from './images/indonesia-map.png'
 
 export {
     logo,
@@ -17,5 +21,9 @@ export {
     deliverytime,
     quality,
     landing2,
-    brand
+    brand,
+    alcohol,
+    charcoal,
+    panthenol,
+    indomap
 }
