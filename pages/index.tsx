@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import { Form } from 'react-bootstrap'
 import { alcohol, bestprice, brand, charcoal, customerreview, customerservice, deliverytime, indomap, landing, mail, panthenol, quality } from '../assets'
 import Navbar from '../components/Navbar'
 import styles from '../styles/Home.module.css'
@@ -123,7 +124,7 @@ export default function Home() {
         </div>
 
         {/* Info */}
-        <div id='info' className='bg-default'>
+        <div id='about' className='bg-default'>
           <p className='text-center' style={{ fontSize: 30 }}>
             <strong>PT. Multiverese Anugerah Chemindo</strong> is a company withhigh expertise in
             importing & distributing raw materials for cosmetic, food, and chemical industries.
@@ -242,12 +243,30 @@ export default function Home() {
 
         {/* Mailing */}
         <div className='position-mail'>
-          <Image alt='mails' src={mail} style={{ zIndex: 999999 }} width={100} height={80} />
+          <Image alt='mails' src={mail} className='z-7' width={100} height={80} />
         </div>
         <div className='d-flex justify-content-center'>
           <div className='box-mailing'>
-
+            <div>
+              <Form>
+                <input className='form-control' placeholder='Enter your name' required />
+                <input className='form-control mt-2' placeholder='Enter company' required />
+                <input className='form-control mt-2' placeholder='Enter phone number' required />
+                <input className='form-control mt-2' placeholder='Enter email' type={'email'} required />
+                <textarea className='form-control mt-2' placeholder='Enter message' required />
+                <button className='btn btn-warning mt-2 w-100 text-white'>
+                  Connect
+                </button>
+              </Form>
+            </div>
           </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className='bg-default'>
+        <div>
+          <h2>Connect With Us!</h2>
         </div>
       </div>
     </div>
