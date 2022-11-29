@@ -173,7 +173,7 @@ export default function Home() {
               <div className='box-vm mt-3'>
                 <p className='text-center px-2'>
                   Deliver superior quality chemical products that contribute
-                  positive impact to our customer's business growth.
+                  positive impact to our customer`s business growth.
                 </p>
               </div>
               <div className='box-vm mt-3'>
