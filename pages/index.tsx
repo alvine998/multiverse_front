@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { bestprice, customerreview, customerservice, deliverytime, landing, quality } from '../assets'
+import { bestprice, brand, customerreview, customerservice, deliverytime, landing, quality } from '../assets'
 import Navbar from '../components/Navbar'
 import styles from '../styles/Home.module.css'
 
@@ -38,7 +38,7 @@ export default function Home() {
   const [count, setCount] = useState(0)
 
   useEffect(() => {
-
+    setCount(0)
   }, [count])
   return (
     <div>
@@ -53,9 +53,23 @@ export default function Home() {
       <div>
         <div className='bg-landing'>
           <Navbar></Navbar>
-          {/* <div className='bg-pink'>
+          <div className='bg-pink'>
+            <Image src={brand} alt="brand" width={500} />
 
-          </div> */}
+            <div className='container-pink'>
+              <p className='text-purple2'>The Best Raw Material You Can Get!</p>
+              <h1>
+                Importers & Distributors
+                <br/>
+                In The Chemical Industries
+              </h1>
+              <p className='fs-4'>
+                Provide our customers with the best chemical <br/>
+                products at the best possible market price <br/>
+                without compromising quality.
+              </p>
+            </div>
+          </div>
         </div>
         <div className='bg-default'>
           <h1 className='text-center'>Products Gallery</h1>
@@ -127,10 +141,10 @@ export default function Home() {
             </div>
             <div>
               <button className='btn btn-primary' onClick={() => {
-                if (count < provides?.length-1) {
+                if (count < provides?.length - 1) {
                   setCount(count + 1)
                   console.log(count, 'countes')
-                  return 
+                  return
                 } else {
                   setCount(0)
                 }
