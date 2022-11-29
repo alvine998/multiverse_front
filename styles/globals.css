@@ -19,24 +19,25 @@ a {
   html {
     color-scheme: dark;
   }
+
   body {
     color: white;
     background: black;
   }
 }
 
-.bg-login{
+.bg-login {
   background-image: linear-gradient(180deg, #F35BE3, #DA23C7);
   height: 100vh;
 }
 
-.card-center{
+.card-center {
   display: flex;
   justify-content: center;
   padding-top: 100px;
 }
 
-.card-login{
+.card-login {
   width: 300px;
   height: 350px;
   box-shadow: 10px, 10px, 5px, 10px, black;
@@ -45,34 +46,34 @@ a {
   padding: 20px;
 }
 
-.sidebar{
+.sidebar {
   background-color: #DA23C7;
   height: 100vh;
   width: 100%;
 }
 
-.topbar{
+.topbar {
   background-color: aliceblue;
   height: 50px;
   width: 100%;
 }
 
-.-ml-2{
+.-ml-2 {
   margin-left: -23px;
 }
 
-.notification-success{
+.notification-success {
   width: 100%;
   border-radius: 20px;
   height: 100px;
   background-color: lightgreen;
 }
 
-.pl-5{
+.pl-5 {
   padding-left: 70px;
 }
 
-.bg-landing{
+.bg-landing {
   background-image: url('../assets/images/landing2.png');
   height: 100vh;
   width: 100%;
@@ -80,7 +81,7 @@ a {
   background-size: cover;
 }
 
-.bg-pink{
+.bg-pink {
   height: 100vh;
   z-index: 99999;
   background-image: url('../assets/images/model.png');
@@ -92,11 +93,11 @@ a {
   padding-top: 40px;
 }
 
-.z-2{
+.z-2 {
   z-index: 2;
 }
 
-.bg-default{
+.bg-default {
   background-color: white;
   height: 95vh;
   width: auto;
@@ -104,24 +105,24 @@ a {
   padding-inline: 100px;
 }
 
-.text-purple{
+.text-purple {
   font-size: 30px;
   color: #DA23C7;
   font-weight: bold;
 }
 
-.text-purple2{
+.text-purple2 {
   font-size: 24px;
   color: #DA23C7;
   font-weight: bold;
 }
 
-.container-pink{
+.container-pink {
   margin-left: 20px;
   margin-top: 200px;
 }
 
-.box-provide{
+.box-provide {
   width: 300px;
   height: 100%;
   background-color: #f6b0ef;
@@ -130,23 +131,23 @@ a {
   text-align: center;
 }
 
-.px-7{
+.px-7 {
   margin-inline: 100px;
 }
 
-.dotted{
+.dotted {
   width: 15px;
   height: 15px;
   background-color: black;
   border-radius: 15px;
 }
 
-.text-slide{
+.text-slide {
   transition: 0.5s;
   left: -100%;
 }
 
-.box-title{
+.box-title {
   background-color: #DA23C7;
   width: 250px;
   height: 50px;
@@ -154,7 +155,20 @@ a {
   padding-top: 10px;
 }
 
-.box-vm{
+.position-mail {
+  margin-left: 67rem;
+}
+
+.box-mailing {
+  width: 50%;
+  height: 350px;
+  border: 5px rgb(216, 194, 25);
+  border-style: solid;
+  border-radius: 20px;
+  background-color: #f7abf0;
+}
+
+.box-vm {
   background-color: #f6b0ef;
   width: 400px;
   height: 100%;
@@ -162,7 +176,7 @@ a {
   padding-top: 10px;
 }
 
-.box-testi{
+.box-testi {
   width: 500px;
   height: 200px;
   background-color: gainsboro;
@@ -173,11 +187,15 @@ a {
   font-size: 20px;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-family: 'Abril Fatface', cursive;
 }
 
-.box{
+.box {
   width: 300px;
   height: 200px;
   border-radius: 20px;

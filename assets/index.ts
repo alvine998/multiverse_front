@@ -11,6 +11,7 @@ import alcohol from './images/alcohol.png'
 import charcoal from './images/charcoal.jpg'
 import panthenol from './images/panthenol.jpg'
 import indomap from './images/indonesia-map.png'
+import mail from './images/mail.png'
 
 export {
     logo,
@@ -25,5 +26,6 @@ export {
     alcohol,
     charcoal,
     panthenol,
-    indomap
+    indomap,
+    mail
 }

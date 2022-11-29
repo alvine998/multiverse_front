@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { alcohol, bestprice, brand, charcoal, customerreview, customerservice, deliverytime, indomap, landing, panthenol, quality } from '../assets'
+import { alcohol, bestprice, brand, charcoal, customerreview, customerservice, deliverytime, indomap, landing, mail, panthenol, quality } from '../assets'
 import Navbar from '../components/Navbar'
 import styles from '../styles/Home.module.css'
 
@@ -237,6 +237,16 @@ export default function Home() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Mailing */}
+        <div className='position-mail'>
+          <Image alt='mails' src={mail} style={{ zIndex: 999999 }} width={100} height={80} />
+        </div>
+        <div className='d-flex justify-content-center'>
+          <div className='box-mailing'>
+
           </div>
         </div>
       </div>
