@@ -1,20 +1,43 @@
-import React from 'react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import React, { useEffect, useState } from 'react'
 
-export default function Navbar({children}:any) {
+export default function Navbar({ children }: any) {
+    const { pathname } = useRouter()
+    const [names, setNames] = useState<string>()
+    const setupNav = () => {
+        if (pathname?.includes('about') || pathname?.includes('product') || pathname?.includes('contact')) {
+            setNames('nav-link active text-black fw-bold fs-5')
+        } else {
+            setNames('nav-link active text-white fw-bold fs-5')
+        }
+    }
+
+    useEffect(() => {
+        setupNav()
+    })
     return (
         <div className='z-2 pt-3 pe-5'>
             <ul className="nav justify-content-end">
                 <li className="nav-item">
-                    <a className="nav-link active text-white fw-bold fs-5" aria-current="page" href="/">HOME</a>
+                    <Link href={'/'}>
+                        <p className={names} aria-current="page">HOME</p>
+                    </Link>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link text-white fw-bold fs-5" href="#about">ABOUT</a>
+                    <Link href={'/about'}>
+                        <p className={names}>ABOUT</p>
+                    </Link>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link text-white fw-bold fs-5" href="#product">PRODUCT</a>
+                    <Link href={'/product'}>
+                        <p className={names}>PRODUCT</p>
+                    </Link>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link disabled text-white fw-bold fs-5" href="#contact" aria-disabled="true">CONTACT</a>
+                    <Link href={'/contact'}>
+                        <p className={names}>CONTACT</p>
+                    </Link>
                 </li>
             </ul>
             <div>

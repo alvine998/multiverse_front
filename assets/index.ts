@@ -12,6 +12,15 @@ import charcoal from './images/charcoal.jpg'
 import panthenol from './images/panthenol.jpg'
 import indomap from './images/indonesia-map.png'
 import mail from './images/mail.png'
+import email2 from './images/email2.png'
+import email from './images/email.png'
+import connects from './images/connect.jpg'
+import map from './images/map.png'
+import instagram from './images/instagram.png'
+import telephone from './images/telephone.png'
+import whatsapp from './images/whatsapp.png'
+import whatsapp2 from './images/whatsapp2.png'
+import multi from './images/multi.png'
 
 export {
     logo,
@@ -27,5 +36,14 @@ export {
     charcoal,
     panthenol,
     indomap,
-    mail
+    mail,
+    connects,
+    email,
+    email2,
+    instagram,
+    map,
+    telephone,
+    whatsapp,
+    whatsapp2,
+    multi
 }
