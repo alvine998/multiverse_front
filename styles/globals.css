@@ -74,11 +74,88 @@ a {
 }
 
 .bg-landing {
-  background-image: url('../assets/images/landing2.png');
+  background-image: url('../assets/images/landing3.png');
   height: 100vh;
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+ul,
+#myUL {
+  list-style-type: none;
+}
+
+#myUL {
+  margin: 0;
+  padding: 0;
+  transition: 0.3s;
+}
+
+.caret {
+  cursor: pointer;
+  -webkit-user-select: none;
+  /* Safari 3.1+ */
+  -moz-user-select: none;
+  /* Firefox 2+ */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+  transition: 0.3s;
+}
+
+.caret::before {
+  content: "\25B6";
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
+  transition: 0.3s;
+}
+
+.caret-down::before {
+  -ms-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  transition: 0.3s;
+}
+
+.nested {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+.line-pink{
+  background-color: #f6b0ef;
+  height: 5px;
+  width: 300px;
+  margin-bottom: 10px;
+}
+
+.box-product{
+  background-color: #f6b0ef;
+  border-top-left-radius: 20px;
+  height: 50px;
+  width: 1250px;
+  overflow: hidden;
+}
+
+.box-product-2{
+  background-color: #f6b0ef;
+  height: 70vh;
+  width: 100%;
+  padding: 20px;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+.box-search{
+  height: 40px;
+  width: 300px;
+  border-radius: 20px;
+  background-color: aliceblue;
 }
 
 .bg-pink {
@@ -168,7 +245,7 @@ a {
   z-index: 9999;
 }
 
-.z-7{
+.z-7 {
   z-index: 9999;
 }
 
@@ -220,11 +297,11 @@ h5 {
   margin-top: 50px;
 }
 
-.-mt-10{
+.-mt-10 {
   margin-top: -100px;
 }
 
-.card-box{
+.card-box {
   width: 300px;
   height: 300px;
   border: 3px rgb(155, 155, 155);

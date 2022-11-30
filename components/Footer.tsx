@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import { email2, instagram, map, multi, whatsapp2 } from '../assets'
 
@@ -18,17 +19,31 @@ export default function Footer() {
                     </div>
                     <div className='ms-5'>
                         <p className='fs-5 fw-bold' >Company</p>
-                        <p className='fs-5'>
-                            <a>About</a><br />
-                            <a>Product</a><br />
-                            <a>Contacts</a><br />
+                        <p className='fs-5 text-black'>
+                            <Link href={'/about'}>
+                                <a>About</a><br />
+                            </Link>
+                            <Link href={'/product'}>
+                                <a>Product</a><br />
+                            </Link>
+                            <Link href={'/contact'}>
+                                <a>Contacts</a><br />
+                            </Link>
                         </p>
                     </div>
                     <div className='d-flex flex-row gap-3 ms-5'>
-                        <Image src={whatsapp2} alt="connect" width={35} height={35} style={{ borderRadius: '20px' }} />
-                        <Image src={email2} alt="connect" width={35} height={35} style={{ borderRadius: '20px' }} />
-                        <Image src={instagram} alt="connect" width={35} height={35} style={{ borderRadius: '20px' }} />
-                        <Image src={map} alt="connect" width={35} height={35} />
+                        <Link href={'whatsapp://send?abid=628879567888&text=Hello%2C%20World!'}>
+                            <Image src={whatsapp2} alt="connect" width={35} height={35} style={{ borderRadius: '20px' }} />
+                        </Link>
+                        <Link target={'_blank'} href={'mailto:sales@ptmultiverse.com'}>
+                            <Image src={email2} alt="connect" width={35} height={35} style={{ borderRadius: '20px' }} />
+                        </Link>
+                        <Link target={'_blank'} href={'https://instagram.com/'}>
+                            <Image src={instagram} alt="connect" width={35} height={35} style={{ borderRadius: '20px' }} />
+                        </Link>
+                        <Link target={'_blank'} href={'https://www.google.com/maps/place/PT+UNIVERSE+SOLUSI+DIGITAL/@-6.1077868,106.6180349,12z/data=!4m10!1m2!2m1!1spt+multiverse!3m6!1s0x2e69f5caa2f92667:0x8ffaa52281733371!8m2!3d-6.2080777!4d106.8204522!15sCg1wdCBtdWx0aXZlcnNlkgEQc29mdHdhcmVfY29tcGFueeABAA!16s%2Fg%2F11jt04mf8x'}>
+                            <Image src={map} alt="connect" width={35} height={35} />
+                        </Link>
                     </div>
                 </div>
             </div>

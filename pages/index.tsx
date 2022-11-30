@@ -230,7 +230,7 @@ export default function Home() {
                   <p className='fs-5 fw-bold' >Email</p>
                   <p style={{ marginTop: '-20px' }}>
                     Just one click this address {" "}
-                    <a href='#email'>sales@ptmultiverse.com</a><br />
+                    <a target={'_blank'} href={'mailto:sales@ptmultiverse.com'}>sales@ptmultiverse.com</a><br />
                     And you can easily discuss with us on email
                   </p>
                 </div>
@@ -244,7 +244,7 @@ export default function Home() {
                   <p className='fs-5 fw-bold' >Call</p>
                   <p style={{ marginTop: '-20px' }}>
                     Click this number {" "}
-                    <a href='#call'>+6221 557 11 888</a> and you will<br />
+                    <a href='tel:622155711888' target={'_blank'}>+6221 557 11 888</a> and you will<br />
                     be directly to connect with us via call
                   </p>
                 </div>
@@ -258,7 +258,7 @@ export default function Home() {
                   <p className='fs-5 fw-bold' >Whastapp</p>
                   <p style={{ marginTop: '-20px' }}>
                     Click this number {" "}
-                    <a href='#whatsapp'>+6288 79 567 888</a> and you will<br />
+                    <a href='whatsapp://send?abid=628879567888&text=Hello%2C%20World!' target={'_blank'}>+6288 79 567 888</a> and you will<br />
                     be directly to connect with us via whatsapp
                   </p>
                 </div>
@@ -272,10 +272,18 @@ export default function Home() {
                 <Image src={connects} alt="connect" width={250} height={150} style={{ borderRadius: '20px' }} />
                 <h5 className='mt-3'>Follow Us!</h5>
                 <div className='d-flex mt-3 justify-content-around'>
-                  <Image src={whatsapp2} alt="connect" width={35} height={35} style={{ borderRadius: '20px' }} />
-                  <Image src={email2} alt="connect" width={35} height={35} style={{ borderRadius: '20px' }} />
-                  <Image src={instagram} alt="connect" width={35} height={35} style={{ borderRadius: '20px' }} />
-                  <Image src={map} alt="connect" width={35} height={35} />
+                  <Link href={'whatsapp://send?abid=628879567888&text=Hello%2C%20World!'}>
+                    <Image src={whatsapp2} alt="connect" width={35} height={35} style={{ borderRadius: '20px' }} />
+                  </Link>
+                  <Link target={'_blank'} href={'mailto:sales@ptmultiverse.com'}>
+                    <Image src={email2} alt="connect" width={35} height={35} style={{ borderRadius: '20px' }} />
+                  </Link>
+                  <Link target={'_blank'} href={'https://instagram.com/'}>
+                    <Image src={instagram} alt="connect" width={35} height={35} style={{ borderRadius: '20px' }} />
+                  </Link>
+                  <Link target={'_blank'} href={'https://www.google.com/maps/place/PT+UNIVERSE+SOLUSI+DIGITAL/@-6.1077868,106.6180349,12z/data=!4m10!1m2!2m1!1spt+multiverse!3m6!1s0x2e69f5caa2f92667:0x8ffaa52281733371!8m2!3d-6.2080777!4d106.8204522!15sCg1wdCBtdWx0aXZlcnNlkgEQc29mdHdhcmVfY29tcGFueeABAA!16s%2Fg%2F11jt04mf8x'}>
+                    <Image src={map} alt="connect" width={35} height={35} />
+                  </Link>
                 </div>
               </div>
             </div>
@@ -283,7 +291,7 @@ export default function Home() {
 
         </div>
         <div>
-          <Footer/> 
+          <Footer />
         </div>
       </div>
     </div>
