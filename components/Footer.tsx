@@ -19,17 +19,17 @@ export default function Footer() {
                     </div>
                     <div className='ms-5'>
                         <p className='fs-5 fw-bold' >Company</p>
-                        <p className='fs-5 text-black'>
+                        <div>
                             <Link href={'/about'}>
-                                <a>About</a><br />
+                                <p className='fs-5 text-black'>About</p>
                             </Link>
                             <Link href={'/product'}>
-                                <a>Product</a><br />
+                                <p className='fs-5 text-black' style={{marginTop:-20}}>Product</p>
                             </Link>
                             <Link href={'/contact'}>
-                                <a>Contacts</a><br />
+                                <p className='fs-5 text-black' style={{marginTop:-20}}>Contacts</p>
                             </Link>
-                        </p>
+                        </div>
                     </div>
                     <div className='d-flex flex-row gap-3 ms-5'>
                         <Link href={'whatsapp://send?abid=628879567888&text=Hello%2C%20World!'}>

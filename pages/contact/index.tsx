@@ -1,18 +1,23 @@
+import Head from 'next/head'
 import Image from 'next/image'
 import React from 'react'
 import { Form } from 'react-bootstrap'
 import { mail } from '../../assets'
+import Footer from '../../components/Footer'
 import Navbar from '../../components/Navbar'
 
 export default function index() {
     return (
         <div>
+            <Head>
+                <title>Contact</title>
+            </Head>
             <Navbar>
                 <div className='bg-default-2'>
                     <div className='position-mail'>
                         <Image alt='mails' src={mail} className='z-7' width={100} height={80} />
                     </div>
-                    <div className='d-flex justify-content-center'>
+                    <div className='d-flex justify-content-center' style={{paddingTop:90}}>
                         <div className='box-mailing'>
                             <div>
                                 <Form>
@@ -30,6 +35,9 @@ export default function index() {
                     </div>
                 </div>
             </Navbar>
+            <div>
+                <Footer/>
+            </div>
         </div>
     )
 }

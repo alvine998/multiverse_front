@@ -164,7 +164,7 @@ export default function Home() {
 
 
         {/* Testimonial */}
-        <div id='testi' className='bg-default'>
+        <div id='testi' className='bg-default-2'>
           <div className='d-flex justify-content-between gap-5'>
             <div>
               <p className='fs-5 fw-bold'>Testimonial</p>
@@ -217,7 +217,7 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <div className='bg-default-2 -mt-10'>
+      <div className='bg-default-2' style={{ marginTop: 100 }}>
         <div className='d-flex flex-row'>
           <div>
             <h2>Connect With Us!</h2>
@@ -228,11 +228,13 @@ export default function Home() {
                 </div>
                 <div>
                   <p className='fs-5 fw-bold' >Email</p>
-                  <p style={{ marginTop: '-20px' }}>
-                    Just one click this address {" "}
-                    <a target={'_blank'} href={'mailto:sales@ptmultiverse.com'}>sales@ptmultiverse.com</a><br />
-                    And you can easily discuss with us on email
-                  </p>
+                  <div style={{ marginTop: '-20px' }}>
+                    <p>
+                      Just one click this address {" "}
+                      <a target={'_blank'} href={'mailto:sales@ptmultiverse.com'}>sales@ptmultiverse.com</a><br />
+                      And you can easily discuss with us on email
+                    </p>
+                  </div>
                 </div>
               </div>
 
@@ -242,11 +244,13 @@ export default function Home() {
                 </div>
                 <div>
                   <p className='fs-5 fw-bold' >Call</p>
-                  <p style={{ marginTop: '-20px' }}>
-                    Click this number {" "}
-                    <a href='tel:622155711888' target={'_blank'}>+6221 557 11 888</a> and you will<br />
-                    be directly to connect with us via call
-                  </p>
+                  <div style={{ marginTop: '-20px' }}>
+                    <p>
+                      Click this number {" "}
+                      <a href='tel:622155711888' target={'_blank'}>+6221 557 11 888</a> and you will<br />
+                      be directly to connect with us via call
+                    </p>
+                  </div>
                 </div>
               </div>
 
@@ -256,11 +260,13 @@ export default function Home() {
                 </div>
                 <div>
                   <p className='fs-5 fw-bold' >Whastapp</p>
-                  <p style={{ marginTop: '-20px' }}>
-                    Click this number {" "}
-                    <a href='whatsapp://send?abid=628879567888&text=Hello%2C%20World!' target={'_blank'}>+6288 79 567 888</a> and you will<br />
-                    be directly to connect with us via whatsapp
-                  </p>
+                  <div>
+                    <p style={{ marginTop: '-20px' }}>
+                      Click this number {" "}
+                      <a href='whatsapp://send?abid=628879567888&text=Hello%2C%20World!' target={'_blank'}>+6288 79 567 888</a> and you will<br />
+                      be directly to connect with us via whatsapp
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

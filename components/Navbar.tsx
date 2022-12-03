@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 
 export default function Navbar({ children }: any) {
     const { pathname } = useRouter()
-    const [names, setNames] = useState<string>()
+    const [names, setNames] = useState<any>()
     const setupNav = () => {
         if (pathname?.includes('about') || pathname?.includes('product') || pathname?.includes('contact')) {
             setNames('nav-link active text-black fw-bold fs-5')
@@ -15,7 +15,7 @@ export default function Navbar({ children }: any) {
 
     useEffect(() => {
         setupNav()
-    })
+    },[])
     return (
         <div className='z-2 pt-3 pe-5'>
             <ul className="nav justify-content-end">

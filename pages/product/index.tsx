@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import React from 'react'
+import Footer from '../../components/Footer'
 import Navbar from '../../components/Navbar'
 import SideProduct from '../../components/SideProduct'
 
@@ -38,6 +39,7 @@ export default function index() {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     )
 }

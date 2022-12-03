@@ -188,6 +188,7 @@ ul,
   width: auto;
   margin-top: 0px;
   padding-inline: 100px;
+  margin-bottom: 100px;
 }
 
 .text-purple {
@@ -241,8 +242,9 @@ ul,
 }
 
 .position-mail {
-  margin-left: 67rem;
+  margin-left: 57rem;
   z-index: 9999;
+  position: absolute;
 }
 
 .z-7 {
@@ -257,7 +259,7 @@ ul,
   border-radius: 20px;
   background-color: #f7abf0;
   margin-top: -50px;
-  z-index: -2;
+  z-index: 2;
   margin-bottom: 20px;
   padding-top: 50px;
   padding-inline: 100px;
