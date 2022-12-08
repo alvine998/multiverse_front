@@ -1,4 +1,6 @@
 import axios from 'axios'
+import Head from 'next/head'
+import Link from 'next/link'
 import React, { useState } from 'react'
 import { Form, Spinner } from 'react-bootstrap'
 import Input from '../Input/Input'
@@ -28,6 +30,9 @@ export default function LoginPage() {
     }
     return (
         <div className='bg-login'>
+            <Head>
+                <title>Login</title>
+            </Head>
             <div className='card-center'>
                 <div className='card-login'>
                     <p className='text-center fs-5'>
@@ -47,6 +52,9 @@ export default function LoginPage() {
                                         <div className='mt-2'>
                                             <p className='text-danger'>{message}</p>
                                             <button className='btn btn-primary w-100'>LOGIN</button>
+                                            <Link href={'/'}>
+                                                <p className='text-primary mt-2 text-center'>Kembali Ke Halaman Utama</p>
+                                            </Link>
                                         </div>
                                 }
                             </div>
