@@ -1,10 +1,13 @@
 import { ChevronRight, ExpandMore } from '@mui/icons-material'
 import { TreeItem, TreeView } from '@mui/lab'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React from 'react'
 import { logo } from '../assets'
 
 export default function Sidebar() {
+  const {pathname} = useRouter()
   return (
     <div>
       <div className='sidebar'>
@@ -12,26 +15,38 @@ export default function Sidebar() {
           <Image src={logo} alt='logo multiverse' width={100} height={100} />
         </div>
         <div className='mt-5'>
-          <TreeView
-            aria-label="file system navigator"
-            defaultCollapseIcon={<ExpandMore />}
-            defaultExpandIcon={<ChevronRight />}
-            sx={{ height: '100%', flexGrow: 1, maxWidth: '100%', overflowY: 'auto' }}
-            className='ms-3 bg-info'
-          >
-            <TreeItem nodeId="1" label="Content">
-              <TreeItem nodeId="2" label="Profile" />
-              <TreeItem nodeId="3" label="Banner Promo" />
-              <TreeItem nodeId="4" label="Mailing" />
-            </TreeItem>
-            <TreeItem nodeId="5" label="Products">
-              <TreeItem nodeId="6" label="Data Category" />
-              <TreeItem nodeId="7" label="Data Product" />
-            </TreeItem>
-            <TreeItem nodeId="8" label="Setting">
-              <TreeItem nodeId="9" label="Admin Account" />
-            </TreeItem>
-          </TreeView>
+          <ul>
+            <li>
+              <Link href={'/admin/dashboard'}>
+                <p className={pathname?.includes('dashboard') ? 'fs-5' : 'text-black fs-5'}><ChevronRight/> Dashboard</p>
+              </Link>
+            </li>
+            <li>
+              <Link href={'/admin/content'}>
+                <p className={pathname?.includes('content') ? 'fs-5' : 'text-black fs-5'}><ChevronRight/> Konten</p>
+              </Link>
+            </li>
+            <li>
+              <Link href={'/admin/profile'}>
+                <p className={pathname?.includes('profile') ? 'fs-5' : 'text-black fs-5'}><ChevronRight/> Profil Perusahaan</p>
+              </Link>
+            </li>
+            <li>
+              <Link href={'/admin/product'}>
+                <p className={pathname?.includes('product') ? 'fs-5' : 'text-black fs-5'}><ChevronRight/> Data Produk</p>
+              </Link>
+            </li>
+            <li>
+              <Link href={'/admin/category'}>
+                <p className={pathname?.includes('category') ? 'fs-5' : 'text-black fs-5'}><ChevronRight/> Kategori</p>
+              </Link>
+            </li>
+            <li>
+              <Link href={'/admin/account'}>
+                <p className={pathname?.includes('account') ? 'fs-5' : 'text-black fs-5'}><ChevronRight/> Akun Pengguna</p>
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

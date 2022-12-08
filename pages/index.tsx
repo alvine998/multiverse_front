@@ -88,7 +88,7 @@ export default function Home() {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin={''} />
         <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet"></link>
       </Head>
-      <div>
+      <div style={{overflowX:'hidden'}}>
         <div className='bg-landing'>
           <Navbar></Navbar>
           <div className='bg-pink'>
