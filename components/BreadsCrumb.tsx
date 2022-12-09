@@ -6,8 +6,8 @@ export default function BreadsCrumb(props: any) {
         <div>
             <Breadcrumbs aria-label='breadcrumb' >
                 {
-                    props?.items?.map((v: any) => (
-                        <div>
+                    props?.items?.map((v: any, i:number) => (
+                        <div key={i}>
                             {
                                 v?.current !== true ? <>
                                     <Link underline='hover' color={'inherit'} href={v?.href}>

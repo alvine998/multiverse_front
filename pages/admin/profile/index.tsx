@@ -1,10 +1,9 @@
-import Head from 'next/head'
 import React from 'react'
 import { Form } from 'react-bootstrap'
 import Input from '../../../components/Input/Input'
 import Layout from '../../../components/Layout'
 
-export default function index() {
+export default function Profile() {
     return (
         <div>
             <Layout>

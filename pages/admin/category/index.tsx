@@ -1,22 +1,13 @@
-import Head from 'next/head'
 import React from 'react'
-import BreadsCrumb from '../../../components/BreadsCrumb'
 import Layout from '../../../components/Layout'
 import { useState } from 'react'
-import ModalAccount from '../../../components/Modals/ModalAccount'
 import ModalCategory from '../../../components/Modals/ModalCategory'
 
-export default function index() {
+export default function Category() {
     const [toggle, setToggle] = useState<boolean>(false)
     const [keys, setKeys] = useState<string>()
     const [toggleData, setToggleData] = useState<any>()
 
-    const Page = [
-        {
-            label: 'Akun Pengguna',
-            current: true,
-        }
-    ]
     return (
         <div>
             <Layout>

@@ -231,7 +231,7 @@ export default function Home() {
                   <div style={{ marginTop: '-20px' }}>
                     <p>
                       Just one click this address {" "}
-                      <a target={'_blank'} href={'mailto:sales@ptmultiverse.com'}>sales@ptmultiverse.com</a><br />
+                      <a target={'_blank'} href={'mailto:sales@ptmultiverse.com'} rel="noopener">sales@ptmultiverse.com</a><br />
                       And you can easily discuss with us on email
                     </p>
                   </div>
@@ -247,7 +247,7 @@ export default function Home() {
                   <div style={{ marginTop: '-20px' }}>
                     <p>
                       Click this number {" "}
-                      <a href='tel:622155711888' target={'_blank'}>+6221 557 11 888</a> and you will<br />
+                      <a href='tel:622155711888' target={'_blank'} rel="noopener">+6221 557 11 888</a> and you will<br />
                       be directly to connect with us via call
                     </p>
                   </div>
@@ -263,7 +263,7 @@ export default function Home() {
                   <div>
                     <p style={{ marginTop: '-20px' }}>
                       Click this number {" "}
-                      <a href='whatsapp://send?abid=628879567888&text=Hello%2C%20World!' target={'_blank'}>+6288 79 567 888</a> and you will<br />
+                      <a href='whatsapp://send?abid=628879567888&text=Hello%2C%20World!' target={'_blank'} rel="noopener">+6288 79 567 888</a> and you will<br />
                       be directly to connect with us via whatsapp
                     </p>
                   </div>
