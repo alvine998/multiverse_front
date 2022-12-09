@@ -12,7 +12,7 @@ export default function Input(props: Props) {
             {
                 props.label ? <label className='form-label'>{props.label}</label> : ''
             }
-            <input className='form-control' {...props}/>
+            <input className='form-control w-100' {...props}/>
         </div>
     )
 }

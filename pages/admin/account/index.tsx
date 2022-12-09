@@ -65,7 +65,11 @@ export default function index() {
                                         setKeys('update')
                                         setToggleData('')
                                     }} className='text-success'>Edit</a>
-                                    <a href='#delete' className='text-danger ms-4'>Hapus</a>
+                                    <a onClick={() => {
+                                        setToggle(!toggle)
+                                        setKeys('delete')
+                                        setToggleData('')
+                                    }} href='#delete' className='text-danger ms-4'>Hapus</a>
                                 </td>
                             </tr>
                         </tbody>

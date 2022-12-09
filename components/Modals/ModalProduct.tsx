@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Input from '../Input/Input';
 
-function ModalCategory(props: any) {
+function ModalProduct(props: any) {
     return (
         <Modal
             show={props?.toggle}
@@ -10,15 +10,18 @@ function ModalCategory(props: any) {
             animation
         >
             <Modal.Header closeButton>
-                <Modal.Title>{props?.keys == 'create' ? 'Tambah Kategori' : props?.keys == 'update' ? 'Ubah Kategori' : 'Hapus Kategori'}</Modal.Title>
+                <Modal.Title>{props?.keys == 'create' ? 'Tambah Produk' : props?.keys == 'update' ? 'Ubah Produk' : 'Hapus Produk'}</Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
                 {
                     props?.keys == 'delete' ? <>
-                        <p>Anda yakin ingin menghapus data kategori ini?</p>
+                        <p>Anda yakin ingin menghapus data produk ini?</p>
                     </> : <>
-                        <Input label='Nama Kategori' placeholder='Masukkan nama kategori' required />
+                        <Input label='Nama Produk' placeholder='Masukkan nama produk' required />
+                        <Input label='Kategori' placeholder='Masukkan kategori' required />
+                        <Input label='Harga' placeholder='Masukkan harga' type={'number'} required />
+                        <Input label='Stok' placeholder='Masukkan stok' type={'number'} required />
                         <Input label='Keterangan' placeholder='Masukkan keterangan' />
                     </>
                 }
@@ -38,4 +41,4 @@ function ModalCategory(props: any) {
     );
 }
 
-export default ModalCategory;
+export default ModalProduct;
