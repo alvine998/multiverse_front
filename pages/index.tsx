@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { Form } from 'react-bootstrap'
 import { alcohol, bestprice, brand, charcoal, connects, customerreview, customerservice, deliverytime, email, email2, indomap, instagram, landing, mail, map, multi, panthenol, quality, telephone, whatsapp, whatsapp2 } from '../assets'
+import Carousels from '../components/Carousels'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import styles from '../styles/Home.module.css'
@@ -88,7 +89,8 @@ export default function Home() {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin={''} />
         <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet"></link>
       </Head>
-      <div style={{overflowX:'hidden'}}>
+      <div style={{ overflowX: 'hidden' }}>
+        {/* Hero */}
         <div className='bg-landing'>
           <Navbar></Navbar>
           <div className='bg-pink'>
@@ -109,6 +111,13 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        {/* Carousel */}
+        <div className='mt-5'>
+          <Carousels />
+        </div>
+
+        {/* Products Gallery */}
         <div className='bg-default' id="product">
           <h1 className='text-center'>Products Gallery</h1>
           <div className='d-flex justify-content-between px-5'>
