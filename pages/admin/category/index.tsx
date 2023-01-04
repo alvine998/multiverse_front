@@ -29,8 +29,8 @@ export default function Category() {
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama</th>
-                                <th>Keterangan</th>
+                                <th>Nama Kategori</th>
+                                <th>Sub Kategori</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>

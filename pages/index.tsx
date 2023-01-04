@@ -91,30 +91,29 @@ export default function Home() {
       </Head>
       <div style={{ overflowX: 'hidden' }}>
         {/* Hero */}
-        <div className='bg-landing'>
-          <Navbar></Navbar>
-          <div className='bg-pink'>
-            <Image src={brand} alt="brand" width={500} />
+        <div>
+          <Carousels />
+          <div style={{marginTop:'-100vh'}}>
+            <Navbar></Navbar>
+            <div className='bg-pink'>
+              <Image src={brand} alt="brand" width={500} />
 
-            <div className='container-pink'>
-              <p className='text-purple2'>The Best Raw Material You Can Get!</p>
-              <h1>
-                Importers & Distributors
-                <br />
-                In The Chemical Industries
-              </h1>
-              <p className='fs-4'>
-                Provide our customers with the best chemical <br />
-                products at the best possible market price <br />
-                without compromising quality.
-              </p>
+              <div className='container-pink'>
+                <p className='text-purple2'>The Best Raw Material You Can Get!</p>
+                <h1>
+                  Importers & Distributors
+                  <br />
+                  In The Chemical Industries
+                </h1>
+                <p className='fs-4'>
+                  Provide our customers with the best chemical <br />
+                  products at the best possible market price <br />
+                  without compromising quality.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Carousel */}
-        <div className='mt-5'>
-          <Carousels />
         </div>
 
         {/* Products Gallery */}
@@ -240,7 +239,7 @@ export default function Home() {
                   <div style={{ marginTop: '-20px' }}>
                     <p>
                       Just one click this address {" "}
-                      <a target={'_blank'} href={'mailto:sales@ptmultiverse.com'} rel="noopener">sales@ptmultiverse.com</a><br />
+                      <a target={'_blank'} href={'mailto:sales@ptmultiverse.com'} rel="noreferrer">sales@ptmultiverse.com</a><br />
                       And you can easily discuss with us on email
                     </p>
                   </div>
@@ -256,7 +255,7 @@ export default function Home() {
                   <div style={{ marginTop: '-20px' }}>
                     <p>
                       Click this number {" "}
-                      <a href='tel:622155711888' target={'_blank'} rel="noopener">+6221 557 11 888</a> and you will<br />
+                      <a href='tel:622155711888' target={'_blank'} rel="noreferrer">+6221 557 11 888</a> and you will<br />
                       be directly to connect with us via call
                     </p>
                   </div>
@@ -272,7 +271,7 @@ export default function Home() {
                   <div>
                     <p style={{ marginTop: '-20px' }}>
                       Click this number {" "}
-                      <a href='whatsapp://send?abid=628879567888&text=Hello%2C%20World!' target={'_blank'} rel="noopener">+6288 79 567 888</a> and you will<br />
+                      <a href='whatsapp://send?abid=628879567888&text=Hello%2C%20World!' target={'_blank'} rel="noreferrer">+6288 79 567 888</a> and you will<br />
                       be directly to connect with us via whatsapp
                     </p>
                   </div>

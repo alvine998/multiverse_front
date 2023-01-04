@@ -165,10 +165,9 @@ ul,
   background-image: url('../assets/images/model.png');
   background-repeat: no-repeat;
   width: 100%;
-  margin-left: 15%;
   margin-top: -100px;
-  padding-left: 60px;
-  padding-top: 40px;
+  padding-left: 20px;
+  padding-top: 60px;
 }
 
 .z-2 {

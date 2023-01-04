@@ -17,7 +17,7 @@ export default function Navbar({ children }: any) {
         setupNav()
     },[])
     return (
-        <div className='z-2 pt-3 pe-5'>
+        <div className='z-2 pt-5 pe-5'>
             <ul className="nav justify-content-end">
                 <li className="nav-item">
                     <Link href={'/'}>
