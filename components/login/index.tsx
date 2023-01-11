@@ -1,8 +1,10 @@
 import axios from 'axios'
 import Head from 'next/head'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { Form, Spinner } from 'react-bootstrap'
+import { Config } from '../../config'
 import Input from '../Input/Input'
 
 export default function LoginPage() {
@@ -10,6 +12,7 @@ export default function LoginPage() {
     const [password, setPassword] = useState()
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [message, setMessage] = useState<string>()
+    const router = useRouter()
     const login = async (e: any) => {
         e.preventDefault()
         setIsLoading(true)
@@ -17,15 +20,16 @@ export default function LoginPage() {
             email: email,
             password: password
         }
-        console.log(payloadData)
         try {
-            const result = await axios.post(`https://multiverseback.herokuapp.com/users/login`, payloadData)
+            console.log(payloadData)
+            const result = await axios.post(`${Config.base_url_api.base}/users/auth`, payloadData)
             setIsLoading(false)
             setMessage('')
-        } catch (error) {
+            router.push('/admin/dashboard')
+        } catch (error: any) {
             console.log(error);
             setIsLoading(false)
-            setMessage('Email atau password salah!')
+            setMessage(error?.response?.data?.result)
         }
     }
     return (

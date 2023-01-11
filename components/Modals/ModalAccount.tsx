@@ -3,6 +3,11 @@ import Modal from 'react-bootstrap/Modal';
 import Input from '../Input/Input';
 
 function ModalAccount(props: any) {
+
+  const handleChange = (e: any) => {
+    props.setPayload({ ...props.payload, [e.target.name]: e.target.value })
+  }
+
   return (
     <Modal
       show={props?.toggle}
@@ -16,12 +21,16 @@ function ModalAccount(props: any) {
       <Modal.Body>
         {
           props?.keys == 'delete' ? <>
-            <p>Anda yakin ingin menghapus akun ini?</p>
+            <p>Anda yakin ingin menghapus akun {props.detail?.Email}?</p>
           </> : <>
-            <Input label='Nama Lengkap' placeholder='Masukkan nama lengkap' required />
-            <Input label='Email' placeholder='Masukkan email' type={'email'} required />
-            <Input label='No Hp' placeholder='Masukkan no hp' required />
-            <Input label='Password' placeholder='********' required type={'password'} />
+            <Input onChange={handleChange} name="name" label='Nama Lengkap' defaultValue={props.detail?.Name || ""} placeholder='Masukkan nama lengkap' required />
+            <Input onChange={handleChange} name="email" label='Email' defaultValue={props.detail?.Email || ""} placeholder='Masukkan email' type={'email'} required />
+            <Input onChange={handleChange} name="phone" label='No Hp' defaultValue={props.detail?.Phone || ""} placeholder='Masukkan no hp' required />
+            {
+              props?.keys !== 'update' ?
+                <Input onChange={handleChange} name="password" label='Password' placeholder='********' required type={'password'} />
+                : ''
+            }
           </>
         }
       </Modal.Body>
@@ -30,10 +39,14 @@ function ModalAccount(props: any) {
         <Button variant="secondary" onClick={() => props?.setToggle(!props?.toggle)}>Kembali</Button>
         {
           props?.keys == 'delete' ? <>
-            <Button variant="danger">Hapus</Button>
-          </> : <>
-            <Button variant="primary">Simpan</Button>
+            <Button variant="danger" onClick={props.actions}>Hapus</Button>
+          </> : props?.keys == 'update' ? <>
+            <Button variant="success" onClick={props.actions}>Update</Button>
           </>
+            :
+            <>
+              <Button variant="primary" onClick={props.actions}>Simpan</Button>
+            </>
         }
       </Modal.Footer>
     </Modal>

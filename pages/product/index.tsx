@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import React from 'react'
+import FadeInSection from '../../components/FadeInSection'
 import Footer from '../../components/Footer'
 import Navbar from '../../components/Navbar'
 import SideProduct from '../../components/SideProduct'
@@ -16,30 +17,32 @@ export default function index() {
                 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet"></link>
             </Head>
             <Navbar></Navbar>
-            <div>
-                <div className='d-flex flex-row overflow-hidden'>
-                    <div className='mt-3'>
-                        <SideProduct />
-                    </div>
-                    <div>
-                        <div className='box-product'>
-                            <div className='d-flex flex-row align-items-center justify-content-around'>
-                                <p className='fs-5 ms-4 mt-2'>Cosmetic / Anti Aging</p>
-                                <div className='box-search'>
-                                    <input type={'text'} className='form-control' placeholder='Search' />
+            <FadeInSection>
+                <div>
+                    <div className='d-flex flex-row overflow-hidden'>
+                        <div className='mt-3'>
+                            <SideProduct />
+                        </div>
+                        <div>
+                            <div className='box-product'>
+                                <div className='d-flex flex-row align-items-center justify-content-around'>
+                                    <p className='fs-5 ms-4 mt-2'>Cosmetic / Anti Aging</p>
+                                    <div className='box-search'>
+                                        <input type={'text'} className='form-control' placeholder='Search' />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className='box-product-2'>
-                            <div className='d-flex flex-row gap-5'>
-                                <p className='fs-4 fw-bold'>- Product Name</p>
-                                <p className='fs-4 fw-bold'>- Product Name</p>
+                            <div className='box-product-2'>
+                                <div className='d-flex flex-row gap-5'>
+                                    <p className='fs-4 fw-bold'>- Product Name</p>
+                                    <p className='fs-4 fw-bold'>- Product Name</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <Footer/>
+            </FadeInSection>
+            <Footer />
         </div>
     )
 }

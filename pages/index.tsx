@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { Form } from 'react-bootstrap'
 import { alcohol, bestprice, brand, charcoal, connects, customerreview, customerservice, deliverytime, email, email2, indomap, instagram, landing, mail, map, multi, panthenol, quality, telephone, whatsapp, whatsapp2 } from '../assets'
 import Carousels from '../components/Carousels'
+import FadeInSection from '../components/FadeInSection'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import styles from '../styles/Home.module.css'
@@ -89,11 +90,11 @@ export default function Home() {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin={''} />
         <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet"></link>
       </Head>
-      <div style={{ overflowX: 'hidden' }}>
+      <div style={{ overflow: 'hidden' }}>
         {/* Hero */}
         <div>
           <Carousels />
-          <div style={{marginTop:'-100vh'}}>
+          <div style={{ marginTop: '-100vh' }}>
             <Navbar></Navbar>
             <div className='bg-pink'>
               <Image src={brand} alt="brand" width={500} />
@@ -117,81 +118,83 @@ export default function Home() {
         </div>
 
         {/* Products Gallery */}
-        <div className='bg-default' id="product">
-          <h1 className='text-center'>Products Gallery</h1>
-          <div className='d-flex justify-content-between px-5'>
-            {
-              products?.map((v: any) => (
-                <div key={v}>
-                  <div className='box'>
-                    <Image style={{ borderRadius: '20px' }} src={v?.image} alt="products" width={300} height={200} />
+        <FadeInSection>
+          <div className='bg-default' id="product">
+            <h1 className='text-center'>Products Gallery</h1>
+            <div className='d-flex justify-content-between px-5'>
+              {
+                products?.map((v: any) => (
+                  <div key={v}>
+                    <div className='box'>
+                      <Image style={{ borderRadius: '20px' }} src={v?.image} alt="products" width={300} height={200} />
+                    </div>
+                    <p className='text-center fs-5 fw-bold mt-2'>{v?.title?.toUpperCase()}</p>
                   </div>
-                  <p className='text-center fs-5 fw-bold mt-2'>{v?.title?.toUpperCase()}</p>
-                </div>
-              ))
-            }
+                ))
+              }
+            </div>
           </div>
-        </div>
+        </FadeInSection>
 
         {/* Info */}
-        <div id='about' className='bg-default-2'>
-          <p className='text-center' style={{ fontSize: 30 }}>
-            <strong>PT. Multiverese Anugerah Chemindo</strong> is a company withhigh expertise in
-            importing & distributing raw materials for cosmetic, food, and chemical industries.
-          </p>
-          <p className='text-center text-purple'>We Provide :</p>
-          <div className='py-5'>
-            <div className='d-flex justify-content-center gap-3'>
-              {
-                provides?.filter((v: any, i: number) => i < 3)?.map((val: any) => (
-                  <div key={val} className='box-provide'>
-                    <div style={{ marginTop: -30 }}>
-                      <Image alt='v' src={val?.icon} width={70} height={70} />
-                    </div>
-                    <p className='fs-5'>{val?.title}</p>
-                  </div>
-                ))
-              }
-            </div>
-            <div className='d-flex justify-content-center gap-3'>
-              {
-                provides?.filter((v: any, i: number) => i > 2)?.map((val: any) => (
-                  <div key={val} className='box-provide'>
-                    <div style={{ marginTop: -30 }}>
-                      <Image alt='v' src={val?.icon} width={70} height={70} />
-                    </div>
-                    <p className='fs-5'>{val?.title}</p>
-                  </div>
-                ))
-              }
-            </div>
-          </div>
-        </div>
-
-        {/* Vission & Mission */}
-
-
-        {/* Testimonial */}
-        <div id='testi' className='bg-default-2'>
-          <div className='d-flex justify-content-between gap-5'>
-            <div>
-              <p className='fs-5 fw-bold'>Testimonial</p>
-              <h2>
-                What Customer Say <br />About Us.
-              </h2>
-              <div className='d-flex justify-content-center gap-3' style={{ marginTop: 100 }}>
+        <FadeInSection>
+          <div id='about' className='bg-default-2'>
+            <p className='text-center' style={{ fontSize: 30 }}>
+              <strong>PT. Multiverese Anugerah Chemindo</strong> is a company withhigh expertise in
+              importing & distributing raw materials for cosmetic, food, and chemical industries.
+            </p>
+            <p className='text-center text-purple'>We Provide :</p>
+            <div className='py-5'>
+              <div className='d-flex justify-content-center gap-3'>
                 {
-                  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]?.map((v: any) => <div key={v} className='dotted' />)
+                  provides?.filter((v: any, i: number) => i < 3)?.map((val: any) => (
+                    <div key={val} className='box-provide'>
+                      <div style={{ marginTop: -30 }}>
+                        <Image alt='v' src={val?.icon} width={70} height={70} />
+                      </div>
+                      <p className='fs-5'>{val?.title}</p>
+                    </div>
+                  ))
+                }
+              </div>
+              <div className='d-flex justify-content-center gap-3'>
+                {
+                  provides?.filter((v: any, i: number) => i > 2)?.map((val: any) => (
+                    <div key={val} className='box-provide'>
+                      <div style={{ marginTop: -30 }}>
+                        <Image alt='v' src={val?.icon} width={70} height={70} />
+                      </div>
+                      <p className='fs-5'>{val?.title}</p>
+                    </div>
+                  ))
                 }
               </div>
             </div>
-            <div>
-              <div className='box-testi'>
-                <p className='text-slide'>{testimonials[count]?.title}</p>
-                <p className='text-slide'>{testimonials[count]?.from}</p>
-                <div className='d-flex justify-content-around'>
-                  <div></div>
-                  {/* <a className='text-primary' href='#previous' onClick={() => {
+          </div>
+        </FadeInSection>
+
+        {/* Testimonial */}
+        <FadeInSection>
+          <div id='testi' className='bg-default-2'>
+            <div className='d-flex justify-content-between gap-5'>
+              <div>
+                <p className='fs-5 fw-bold'>Testimonial</p>
+                <h2>
+                  What Customer Say <br />About Us.
+                </h2>
+                <div className='d-flex justify-content-center gap-3' style={{ marginTop: 100 }}>
+                  {
+                    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]?.map((v: any) => <div key={v} className='dotted' />)
+                  }
+                </div>
+              </div>
+              <div>
+                <div className='box-testi'>
+                  <p className='text-slide'>{testimonials[count]?.title}</p>
+                  <p className='text-slide'>{testimonials[count]?.from}</p>
+                  <div className='d-flex justify-content-around'>
+                    <div></div>
+                    {/* <a className='text-primary' href='#previous' onClick={() => {
                     if (count < testimonials?.length - 1) {
                       setCount(count - 1)
                       console.log(count, 'countes')
@@ -204,109 +207,111 @@ export default function Home() {
                   }}>
                     Previous
                   </a> */}
-                  <a className='text-primary' href='#next' onClick={() => {
-                    if (count < testimonials?.length - 1) {
-                      setCount(count + 1)
-                      console.log(count, 'countes')
-                      return
-                    } else {
-                      setCount(0)
-                    }
-                  }}>
-                    Next
-                  </a>
+                    <a className='text-primary' href='#next' onClick={() => {
+                      if (count < testimonials?.length - 1) {
+                        setCount(count + 1)
+                        console.log(count, 'countes')
+                        return
+                      } else {
+                        setCount(0)
+                      }
+                    }}>
+                      Next
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Mailing */}
+        </FadeInSection>
       </div>
 
       {/* Footer */}
-      <div className='bg-default-2' style={{ marginTop: 100 }}>
-        <div className='d-flex flex-row'>
-          <div>
-            <h2>Connect With Us!</h2>
-            <div className='mt-5'>
-              <div className='d-flex flex-row gap-5'>
-                <div>
-                  <Image src={email} alt="email" width={70} height={70} />
-                </div>
-                <div>
-                  <p className='fs-5 fw-bold' >Email</p>
-                  <div style={{ marginTop: '-20px' }}>
-                    <p>
-                      Just one click this address {" "}
-                      <a target={'_blank'} href={'mailto:sales@ptmultiverse.com'} rel="noreferrer">sales@ptmultiverse.com</a><br />
-                      And you can easily discuss with us on email
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className='d-flex flex-row gap-5 mt-3'>
-                <div>
-                  <Image src={telephone} alt="email" width={70} height={70} />
-                </div>
-                <div>
-                  <p className='fs-5 fw-bold' >Call</p>
-                  <div style={{ marginTop: '-20px' }}>
-                    <p>
-                      Click this number {" "}
-                      <a href='tel:622155711888' target={'_blank'} rel="noreferrer">+6221 557 11 888</a> and you will<br />
-                      be directly to connect with us via call
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className='d-flex flex-row gap-5 mt-3'>
-                <div>
-                  <Image src={whatsapp} alt="email" width={70} height={70} />
-                </div>
-                <div>
-                  <p className='fs-5 fw-bold' >Whastapp</p>
+      <FadeInSection>
+        <div className='bg-default-2' style={{ marginTop: 100 }}>
+          <div className='d-flex flex-row'>
+            <div>
+              <h2>Connect With Us!</h2>
+              <div className='mt-5'>
+                <div className='d-flex flex-row gap-5'>
                   <div>
-                    <p style={{ marginTop: '-20px' }}>
-                      Click this number {" "}
-                      <a href='whatsapp://send?abid=628879567888&text=Hello%2C%20World!' target={'_blank'} rel="noreferrer">+6288 79 567 888</a> and you will<br />
-                      be directly to connect with us via whatsapp
-                    </p>
+                    <Image src={email} alt="email" width={70} height={70} />
+                  </div>
+                  <div>
+                    <p className='fs-5 fw-bold' >Email</p>
+                    <div style={{ marginTop: '-20px' }}>
+                      <p>
+                        Just one click this address {" "}
+                        <a target={'_blank'} href={'mailto:sales@ptmultiverse.com'} rel="noreferrer">sales@ptmultiverse.com</a><br />
+                        And you can easily discuss with us on email
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className='d-flex flex-row gap-5 mt-3'>
+                  <div>
+                    <Image src={telephone} alt="email" width={70} height={70} />
+                  </div>
+                  <div>
+                    <p className='fs-5 fw-bold' >Call</p>
+                    <div style={{ marginTop: '-20px' }}>
+                      <p>
+                        Click this number {" "}
+                        <a href='tel:622155711888' target={'_blank'} rel="noreferrer">+6221 557 11 888</a> and you will<br />
+                        be directly to connect with us via call
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className='d-flex flex-row gap-5 mt-3'>
+                  <div>
+                    <Image src={whatsapp} alt="email" width={70} height={70} />
+                  </div>
+                  <div>
+                    <p className='fs-5 fw-bold' >Whastapp</p>
+                    <div>
+                      <p style={{ marginTop: '-20px' }}>
+                        Click this number {" "}
+                        <a href='whatsapp://send?abid=628879567888&text=Hello%2C%20World!' target={'_blank'} rel="noreferrer">+6288 79 567 888</a> and you will<br />
+                        be directly to connect with us via whatsapp
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className='d-flex align-items-center ms-auto'>
+              <div className='card-box'>
+                <div>
+                  <Image src={connects} alt="connect" width={250} height={150} style={{ borderRadius: '20px' }} />
+                  <h5 className='mt-3'>Follow Us!</h5>
+                  <div className='d-flex mt-3 justify-content-around'>
+                    <Link href={'whatsapp://send?abid=628879567888&text=Hello%2C%20World!'} rel="noopener">
+                      <Image src={whatsapp2} alt="connect" width={35} height={35} style={{ borderRadius: '20px' }} />
+                    </Link>
+                    <Link target={'_blank'} href={'mailto:sales@ptmultiverse.com'} rel="noopener">
+                      <Image src={email2} alt="connect" width={35} height={35} style={{ borderRadius: '20px' }} />
+                    </Link>
+                    <Link target={'_blank'} href={'https://instagram.com/'} rel="noopener">
+                      <Image src={instagram} alt="connect" width={35} height={35} style={{ borderRadius: '20px' }} />
+                    </Link>
+                    <Link target={'_blank'} href={'https://www.google.com/maps/place/PT+UNIVERSE+SOLUSI+DIGITAL/@-6.1077868,106.6180349,12z/data=!4m10!1m2!2m1!1spt+multiverse!3m6!1s0x2e69f5caa2f92667:0x8ffaa52281733371!8m2!3d-6.2080777!4d106.8204522!15sCg1wdCBtdWx0aXZlcnNlkgEQc29mdHdhcmVfY29tcGFueeABAA!16s%2Fg%2F11jt04mf8x'} rel="noopener">
+                      <Image src={map} alt="connect" width={35} height={35} />
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div className='d-flex align-items-center ms-auto'>
-            <div className='card-box'>
-              <div>
-                <Image src={connects} alt="connect" width={250} height={150} style={{ borderRadius: '20px' }} />
-                <h5 className='mt-3'>Follow Us!</h5>
-                <div className='d-flex mt-3 justify-content-around'>
-                  <Link href={'whatsapp://send?abid=628879567888&text=Hello%2C%20World!'} rel="noopener">
-                    <Image src={whatsapp2} alt="connect" width={35} height={35} style={{ borderRadius: '20px' }} />
-                  </Link>
-                  <Link target={'_blank'} href={'mailto:sales@ptmultiverse.com'} rel="noopener">
-                    <Image src={email2} alt="connect" width={35} height={35} style={{ borderRadius: '20px' }} />
-                  </Link>
-                  <Link target={'_blank'} href={'https://instagram.com/'} rel="noopener">
-                    <Image src={instagram} alt="connect" width={35} height={35} style={{ borderRadius: '20px' }} />
-                  </Link>
-                  <Link target={'_blank'} href={'https://www.google.com/maps/place/PT+UNIVERSE+SOLUSI+DIGITAL/@-6.1077868,106.6180349,12z/data=!4m10!1m2!2m1!1spt+multiverse!3m6!1s0x2e69f5caa2f92667:0x8ffaa52281733371!8m2!3d-6.2080777!4d106.8204522!15sCg1wdCBtdWx0aXZlcnNlkgEQc29mdHdhcmVfY29tcGFueeABAA!16s%2Fg%2F11jt04mf8x'} rel="noopener">
-                    <Image src={map} alt="connect" width={35} height={35} />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
-        <div>
-          <Footer />
-        </div>
+      </FadeInSection>
+
+
+      <div>
+        <Footer />
       </div>
     </div>
   )

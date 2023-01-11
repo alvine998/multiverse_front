@@ -1,13 +1,92 @@
 import Head from 'next/head'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Layout from '../../../components/Layout'
 import { useState } from 'react'
 import ModalAccount from '../../../components/Modals/ModalAccount'
+import axios from 'axios'
+import { Config } from '../../../config'
+import Swal from 'sweetalert2'
 
 export default function Account() {
     const [toggle, setToggle] = useState<boolean>(false)
     const [keys, setKeys] = useState<string>()
     const [toggleData, setToggleData] = useState<any>()
+    const [data, setData] = useState<any>([])
+
+    const [payload, setPayload] = useState<any>()
+
+    const getData = async () => {
+        try {
+            const result = await axios.get(`${Config.base_url_api.base}/users/`)
+            setData(result.data.result)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const save = async () => {
+        try {
+            const payloadData = {
+                ...payload
+            }
+            const result = await axios.post(`${Config.base_url_api.base}/users/`, payloadData)
+            getData()
+            setToggle(!toggle)
+            Swal.fire({
+                text: 'Success Create Data',
+                icon: 'success'
+            })
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                text: 'Internal server error',
+                icon: 'error'
+            })
+        }
+    }
+
+    const remove = async () => {
+        try {
+            const result = await axios.delete(`${Config.base_url_api.base}/users/${toggleData?.ID}`)
+            getData()
+            setToggle(!toggle)
+            Swal.fire({
+                text: 'Success Delete Data',
+                icon: 'success'
+            })
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                text: 'Internal server error',
+                icon: 'error'
+            })
+        }
+    }
+
+    const update = async () => {
+        try {
+            const payloadData = {
+                ...payload
+            }
+            const result = await axios.patch(`${Config.base_url_api.base}/users/?id=${toggleData?.ID}`, payloadData)
+            getData()
+            setToggle(!toggle)
+            Swal.fire({
+                text: 'Success Update Data',
+                icon: 'success'
+            })
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                text: 'Internal server error',
+                icon: 'error'
+            })
+        }
+    }
+
+    useEffect(() => {
+        getData()
+    }, [])
     return (
         <div>
             <Head>
@@ -40,33 +119,35 @@ export default function Account() {
                                 <th>Nama</th>
                                 <th>Email</th>
                                 <th>No Telepon</th>
-                                <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Hilmi</td>
-                                <td>hilmi@gmail.com</td>
-                                <td>085700330044</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a href='#edit' onClick={() => {
-                                        setToggle(!toggle)
-                                        setKeys('update')
-                                        setToggleData('')
-                                    }} className='text-success'>Edit</a>
-                                    <a onClick={() => {
-                                        setToggle(!toggle)
-                                        setKeys('delete')
-                                        setToggleData('')
-                                    }} href='#delete' className='text-danger ms-4'>Hapus</a>
-                                </td>
-                            </tr>
+                            {
+                                data?.map((val: any, idx: number) => (
+                                    <tr key={idx}>
+                                        <td>{idx + 1}</td>
+                                        <td>{val?.Name}</td>
+                                        <td>{val?.Email}</td>
+                                        <td>{val?.Phone}</td>
+                                        <td>
+                                            <a href='#edit' onClick={() => {
+                                                setToggle(!toggle)
+                                                setKeys('update')
+                                                setToggleData(val)
+                                            }} className='text-success'>Edit</a>
+                                            <a onClick={() => {
+                                                setToggle(!toggle)
+                                                setKeys('delete')
+                                                setToggleData(val)
+                                            }} href='#delete' className='text-danger ms-4'>Hapus</a>
+                                        </td>
+                                    </tr>
+                                ))
+                            }
                         </tbody>
                     </table>
-                    <ModalAccount toggle={toggle} setToggle={setToggle} keys={keys} />
+                    <ModalAccount toggle={toggle} setToggle={setToggle} keys={keys} detail={toggleData} actions={keys == 'create' ? save : keys == 'delete' ? remove : update} payload={payload} setPayload={setPayload} />
                 </div>
             </Layout>
         </div>
