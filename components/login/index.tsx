@@ -25,6 +25,8 @@ export default function LoginPage() {
             const result = await axios.post(`${Config.base_url_api.base}/users/auth`, payloadData)
             setIsLoading(false)
             setMessage('')
+            console.log(result.data)
+            await localStorage.setItem('loginKey', result.data?.code)
             router.push('/admin/dashboard')
         } catch (error: any) {
             console.log(error);

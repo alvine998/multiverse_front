@@ -18,11 +18,33 @@ function ModalProduct(props: any) {
                     props?.keys == 'delete' ? <>
                         <p>Anda yakin ingin menghapus data produk ini?</p>
                     </> : <>
-                        <Input label='Nama Produk' placeholder='Masukkan nama produk' required />
-                        <Input label='Kategori' placeholder='Masukkan kategori' required />
-                        <Input label='Harga' placeholder='Masukkan harga' type={'number'} required />
-                        <Input label='Stok' placeholder='Masukkan stok' type={'number'} required />
-                        <Input label='Keterangan' placeholder='Masukkan keterangan' />
+                        <Input label='Nama Produk' defaultValue={props?.payload?.Name || ''} onChange={props?.handleChange} name="name" placeholder='Masukkan nama produk' required />
+                        <div className='my-2'>
+                            <label className='form-label'>
+                                Kategori
+                            </label>
+                            <select name='category_id' defaultValue={props?.payload?.Category_id || ''}  onChange={props?.handleChange} className='form-select' required>
+                                <option value={""}>Pilih Kategori</option>
+                                {
+                                    props?.data?.categories?.map((v: any) => <option value={v?.ID}>{v?.Name}</option>)
+                                }
+                            </select>
+                        </div>
+
+                        <div className='my-2'>
+                            <label className='form-label'>
+                                Subkategori
+                            </label>
+                            <select name='subcategory_id' defaultValue={props?.payload?.Subcategory_id || ''}  onChange={props?.handleChange} className='form-select'>
+                                <option value={""}>Pilih Subkategori</option>
+                                {
+                                    props?.data?.subcategories?.filter((v: any) => (props?.payload?.category_id  || props?.payload?.Category_id) == v?.Category_id)?.map((v: any) => <option value={v?.ID}>{v?.Name}</option>)
+                                }
+                            </select>
+                        </div>
+                        <Input label='Harga' defaultValue={props?.payload?.Price || ''}  onChange={props?.handleChange} name="price" placeholder='Masukkan harga' type={'number'} required />
+                        <Input label='Stok' defaultValue={props?.payload?.Stock || ''}  onChange={props?.handleChange} name="stock" placeholder='Masukkan stok' type={'number'} required />
+                        <Input label='Keterangan' defaultValue={props?.payload?.Notes || ''}  onChange={props?.handleChange} name="notes" placeholder='Masukkan keterangan' />
                     </>
                 }
             </Modal.Body>
@@ -31,9 +53,9 @@ function ModalProduct(props: any) {
                 <Button variant="secondary" onClick={() => props?.setToggle(!props?.toggle)}>Kembali</Button>
                 {
                     props?.keys == 'delete' ? <>
-                        <Button variant="danger">Hapus</Button>
+                        <Button variant="danger" onClick={props.remove}>Hapus</Button>
                     </> : <>
-                        <Button variant="primary">Simpan</Button>
+                        <Button variant="primary" onClick={() => { props?.keys == 'create' ? props.save() : props.update() }}>Simpan</Button>
                     </>
                 }
             </Modal.Footer>

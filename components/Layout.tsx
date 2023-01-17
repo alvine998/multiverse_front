@@ -1,10 +1,25 @@
 import Head from 'next/head'
-import React from 'react'
+import { useRouter } from 'next/router'
+import React, { useEffect, useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import Sidebar from './Sidebar'
 import Topbar from './Topbar'
 
 export default function Layout({ children }: any) {
+  const route = useRouter()
+  const [keys, setKeys] = useState<any>()
+  const checkLogin = async () => {
+    const keys = await localStorage.getItem('loginKey')
+    if(!keys){
+      route.push('/admin/login')
+      console.log('back')
+    }
+    setKeys(keys)
+  }
+
+  useEffect(()=>{
+    checkLogin()
+  },[])
   return (
     <div style={{ overflow: "hidden" }}>
       <Head>

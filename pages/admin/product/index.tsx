@@ -1,12 +1,117 @@
 import React from 'react'
 import Layout from '../../../components/Layout'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ModalProduct from '../../../components/Modals/ModalProduct'
+import axios from 'axios'
+import { Config } from '../../../config'
+import Swal from 'sweetalert2'
 
 export default function Product() {
     const [toggle, setToggle] = useState<boolean>(false)
     const [keys, setKeys] = useState<string>()
     const [toggleData, setToggleData] = useState<any>()
+    const [data, setData] = useState<any>()
+    const [payload, setPayload] = useState<any>()
+    const [products, setProducts] = useState<any>([])
+
+    const handleChange = (e: any) => {
+        setPayload({ ...payload, [e.target.name]: e.target.value })
+        console.log(e.target.value);
+    }
+
+    const getData = async () => {
+        try {
+            const resultCat = await axios.get(`${Config.base_url_api.base}/categories/`)
+            const resultSub = await axios.get(`${Config.base_url_api.base}/subcategories/`)
+            setData({
+                categories: resultCat.data.result,
+                subcategories: resultSub.data.result
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const getProducts = async () => {
+        try {
+            const result = await axios.get(`${Config.base_url_api.base}/products/`)
+            setProducts(result.data.result)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const save = async (e: any) => {
+        const payloadData = {
+            ...payload
+        }
+        try {
+            const result = await axios.post(`${Config.base_url_api.base}/products/`, payloadData)
+            Swal.fire({
+                text: 'Suceess Add Data',
+                icon: 'success'
+            })
+            setPayload({ name: '', notes: '' })
+            getProducts()
+            setToggle(!toggle)
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                text: 'Internal Server Error! Please Wait...',
+                icon: 'error'
+            })
+            setToggle(!toggle)
+        }
+    }
+
+    const update = async (e: any) => {
+        const payloadData = {
+            ...payload
+        }
+        try {
+            const result = await axios.patch(`${Config.base_url_api.base}/products/?id=${payload?.ID}`, payloadData)
+            Swal.fire({
+                text: 'Suceess Update Data',
+                icon: 'success'
+            })
+            setPayload({ name: '', notes: '' })
+            getProducts()
+            setToggle(!toggle)
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                text: 'Internal Server Error! Please Wait...',
+                icon: 'error'
+            })
+            setToggle(!toggle)
+        }
+    }
+
+    const remove = async (e: any) => {
+        try {
+            const result = await axios.delete(`${Config.base_url_api.base}/products/${payload?.ID}`)
+            Swal.fire({
+                text: 'Suceess Delete Data',
+                icon: 'success'
+            })
+            setPayload({ name: '', notes: '' })
+            getProducts()
+            setToggle(!toggle)
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                text: 'Internal Server Error! Please Wait...',
+                icon: 'error'
+            })
+            setToggle(!toggle)
+        }
+    }
+
+    useEffect(() => {
+        getData()
+        getProducts()
+        console.log(data?.categories, 'ccc');
+    }, [])
 
     return (
         <div>
@@ -31,40 +136,48 @@ export default function Product() {
                                 <th>No</th>
                                 <th>Nama Produk</th>
                                 <th>Kategori</th>
+                                <th>Subkategori</th>
                                 <th>Harga</th>
                                 <th>Keterangan</th>
                                 <th>Stok</th>
-                                <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Produk 1</td>
-                                <td>Anti-Aging</td>
-                                <td>96.000</td>
-                                <td>Produk anti aging</td>
-                                <td>20</td>
-                                <td>Available</td>
-                                <td>
-                                    <a href='#edit' onClick={() => {
-                                        setToggle(!toggle)
-                                        setKeys('update')
-                                        setToggleData('')
-                                    }} className='text-success'>Edit</a>
-                                    <a onClick={() => {
-                                        setToggle(!toggle)
-                                        setKeys('delete')
-                                        setToggleData('')
-                                    }} href='#delete' className='text-danger ms-4'>Hapus</a>
-                                </td>
-                            </tr>
+                            {
+                                products?.length > 0 ?
+                                    products?.map((val: any, i: number) => (
+                                        <tr key={i}>
+                                            <td>{i + 1}</td>
+                                            <td>{val?.Name}</td>
+                                            <td>{data?.categories?.find((v: any) => v.ID == val.Category_id)?.Name || "-"}</td>
+                                            <td>{data?.subcategories?.find((v: any) => v.ID == val.Subcategory_id)?.Name || "-"}</td>
+                                            <td>{val?.Price}</td>
+                                            <td>{val?.Notes || "-"}</td>
+                                            <td>{val?.Stock || 0}</td>
+                                            <td>
+                                                <a href='#edit' onClick={() => {
+                                                    setToggle(!toggle)
+                                                    setKeys('update')
+                                                    setPayload(val)
+                                                }} className='text-success'>Edit</a>
+                                                <a onClick={() => {
+                                                    setToggle(!toggle)
+                                                    setKeys('delete')
+                                                    setPayload(val)
+                                                }} href='#delete' className='text-danger ms-4'>Hapus</a>
+                                            </td>
+                                        </tr>
+                                    ))
+                                    : <tr>
+                                        <td colSpan={8}>Data tidak ditemukan</td>
+                                    </tr>
+                            }
                         </tbody>
                     </table>
 
 
-                    <ModalProduct toggle={toggle} setToggle={setToggle} keys={keys} />
+                    <ModalProduct toggle={toggle} setToggle={setToggle} keys={keys} data={data} payload={payload} save={save} update={update} remove={remove} handleChange={handleChange} />
 
                 </div>
             </Layout>

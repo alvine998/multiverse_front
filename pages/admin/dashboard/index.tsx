@@ -1,19 +1,39 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useState, useEffect } from 'react'
 import CardDashboard from '../../../components/CardDashboard'
 import Layout from '../../../components/Layout'
+import { Config } from '../../../config'
 
 export default function index() {
+  const [products, setProducts] = useState<any>()
+  const [category, setCategory] = useState<any>()
+
+  const getProducts = async () => {
+    try {
+      const result = await axios.get(`${Config.base_url_api.base}/products/`)
+      const resultC = await axios.get(`${Config.base_url_api.base}/categories/`)
+      setProducts(result.data.result)
+      setCategory(resultC.data.result)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(()=>{
+    getProducts()
+  },[])
 
   const data = [
     {
       title: 'Produk',
-      total: 50
+      total: products?.length || 0
     },
     {
       title: 'Kategori',
-      total: 10
+      total: category?.length || 0
     }
   ]
+
   return (
     <Layout>
       <div>
