@@ -10,11 +10,12 @@ import { useRouter } from 'next/router'
 
 export default function index() {
     const [items, setItems] = useState<any>()
+    const [search, setSearch] = useState<any>()
     const getProducts = async () => {
         try {
             const result = await axios.get(`${Config.base_url_api.base}/categories/`)
             const resultSub = await axios.get(`${Config.base_url_api.base}/subcategories/`)
-            const resultProd = await axios.get(`${Config.base_url_api.base}/products/`)
+            const resultProd = await axios.get(`${Config.base_url_api.base}/products/?search=${search || ''}`)
             setItems({
                 categories: result.data.result,
                 sub: resultSub.data.result,
@@ -30,8 +31,7 @@ export default function index() {
 
     useEffect(() => {
         getProducts()
-        console.log(data, 'ddd');
-    }, [data])
+    }, [data, search])
     return (
         <div>
             <Head>
@@ -54,7 +54,7 @@ export default function index() {
                                 <div className='d-flex flex-row align-items-center justify-content-around'>
                                     <p className='fs-5 ms-4 mt-2'>{items?.categories?.find((v: any) => v.ID == data.category_id)?.Name?.toUpperCase()} / {items?.sub?.find((v: any) => v.ID == data.subcategory_id)?.Name?.toUpperCase()}</p>
                                     <div className='box-search'>
-                                        <input type={'text'} className='form-control' placeholder='Search' />
+                                        <input type={'text'} value={search} onChange={(e)=>setSearch(e.target.value)} className='form-control' placeholder='Search' />
                                     </div>
                                 </div>
                             </div>
