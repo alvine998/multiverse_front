@@ -1,9 +1,24 @@
+import axios from 'axios'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { email2, instagram, map, multi, whatsapp2 } from '../assets'
+import { Config } from '../config'
 
 export default function Footer() {
+    const [data, setData] = useState<any>()
+    const getProfile = async () => {
+        try {
+            const result = await axios.get(`${Config.base_url_api.base}/profiles/`)
+            setData(result.data.result[0])
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(()=>{
+        getProfile()
+    },[])
     return (
         <div>
             <hr />
@@ -32,10 +47,10 @@ export default function Footer() {
                         </div>
                     </div>
                     <div className='d-flex flex-row gap-3 ms-5'>
-                        <Link href={'whatsapp://send?abid=628879567888&text=Hello%2C%20World!'}>
+                        <Link href={`https://wa.me/${data?.Phone?.replace("+", "")}/?text=Hello%2C%20World!`}>
                             <Image src={whatsapp2} alt="connect" width={35} height={35} style={{ borderRadius: '20px' }} />
                         </Link>
-                        <Link target={'_blank'} href={'mailto:sales@ptmultiverse.com'}>
+                        <Link target={'_blank'} href={`mailto:${data?.Email}`}>
                             <Image src={email2} alt="connect" width={35} height={35} style={{ borderRadius: '20px' }} />
                         </Link>
                         <Link target={'_blank'} href={'https://instagram.com/'}>

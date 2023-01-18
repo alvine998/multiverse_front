@@ -4,7 +4,7 @@ import CardDashboard from '../../../components/CardDashboard'
 import Layout from '../../../components/Layout'
 import { Config } from '../../../config'
 
-export default function index() {
+export default function Dashboard() {
   const [products, setProducts] = useState<any>()
   const [category, setCategory] = useState<any>()
 

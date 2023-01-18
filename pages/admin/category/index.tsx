@@ -145,7 +145,7 @@ export default function Category() {
                             {
                                 category?.length > 0 ?
                                     category?.map((v: any, i: number) => (
-                                        <tr>
+                                        <tr key={i}>
                                             <td>{i + 1}</td>
                                             <td>{v?.Name || "-"}</td>
                                             <td>{v?.Notes || "-"}</td>
@@ -188,7 +188,7 @@ export default function Category() {
                                 <Modal.Body>
                                     {
                                         arrSub?.map((val: any, i: number) => (
-                                            <div className='d-flex gap-2 justify-content-center'>
+                                            <div key={i} className='d-flex gap-2 justify-content-center'>
                                                 <Input label={i == 0 ? 'Nama' : ''} defaultValue={val?.name || val?.Name} placeholder='Masukkan Nama' />
                                                 <Input label={i == 0 ? 'Keterangan' : ''} defaultValue={val?.notes || val?.Notes} placeholder='Masukkan Keterangan' />
                                                 <button className={i == 0 ? "btn mt-5" : 'btn mt-3'} type='button' onClick={() => {

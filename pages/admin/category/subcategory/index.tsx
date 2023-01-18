@@ -138,7 +138,7 @@ export default function Category() {
                             {
                                 SubCategory?.length > 0 ?
                                     SubCategory?.map((v: any, i: number) => (
-                                        <tr>
+                                        <tr key={i}>
                                             <td>{i + 1}</td>
                                             <td>{v?.Name || "-"}</td>
                                             <td>{v?.Notes || "-"}</td>

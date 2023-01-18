@@ -11,7 +11,7 @@ import Footer from '../../components/Footer'
 import Navbar from '../../components/Navbar'
 import { Config } from '../../config'
 
-export default function index() {
+export default function Contact() {
 
     const [payload, setPayload] = useState<any>()
 

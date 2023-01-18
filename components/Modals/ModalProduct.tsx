@@ -26,7 +26,7 @@ function ModalProduct(props: any) {
                             <select name='category_id' defaultValue={props?.payload?.Category_id || ''}  onChange={props?.handleChange} className='form-select' required>
                                 <option value={""}>Pilih Kategori</option>
                                 {
-                                    props?.data?.categories?.map((v: any) => <option value={v?.ID}>{v?.Name}</option>)
+                                    props?.data?.categories?.map((v: any) => <option key={v.ID} value={v?.ID}>{v?.Name}</option>)
                                 }
                             </select>
                         </div>
@@ -38,7 +38,7 @@ function ModalProduct(props: any) {
                             <select name='subcategory_id' defaultValue={props?.payload?.Subcategory_id || ''}  onChange={props?.handleChange} className='form-select'>
                                 <option value={""}>Pilih Subkategori</option>
                                 {
-                                    props?.data?.subcategories?.filter((v: any) => (props?.payload?.category_id  || props?.payload?.Category_id) == v?.Category_id)?.map((v: any) => <option value={v?.ID}>{v?.Name}</option>)
+                                    props?.data?.subcategories?.filter((v: any) => (props?.payload?.category_id  || props?.payload?.Category_id) == v?.Category_id)?.map((v: any) => <option key={v.ID} value={v?.ID}>{v?.Name}</option>)
                                 }
                             </select>
                         </div>

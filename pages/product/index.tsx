@@ -8,7 +8,7 @@ import SideProduct from '../../components/SideProduct'
 import { Config } from '../../config'
 import { useRouter } from 'next/router'
 
-export default function index() {
+export default function Product() {
     const [items, setItems] = useState<any>()
     const [search, setSearch] = useState<any>()
     const getProducts = async () => {
@@ -52,7 +52,7 @@ export default function index() {
                         <div>
                             <div className='box-product'>
                                 <div className='d-flex flex-row align-items-center justify-content-around'>
-                                    <p className='fs-5 ms-4 mt-2'>{items?.categories?.find((v: any) => v.ID == data.category_id)?.Name?.toUpperCase()} / {items?.sub?.find((v: any) => v.ID == data.subcategory_id)?.Name?.toUpperCase()}</p>
+                                    <p className='fs-5 ms-4 mt-2 fw-bold'>{items?.categories?.find((v: any) => v.ID == data.category_id)?.Name?.toUpperCase()} / {items?.sub?.find((v: any) => v.ID == data.subcategory_id)?.Name?.toUpperCase()}</p>
                                     <div className='box-search'>
                                         <input type={'text'} value={search} onChange={(e)=>setSearch(e.target.value)} className='form-control' placeholder='Search' />
                                     </div>
@@ -61,7 +61,7 @@ export default function index() {
                             <div className='box-product-2'>
                                 {
                                     items?.prod?.filter((v:any) => v?.Category_id == data?.category_id && v?.Subcategory_id == data?.subcategory_id)?.map((v: any, i: number) => (
-                                        <div className='d-flex flex-row gap-5'>
+                                        <div key={v?.ID} className='d-flex flex-row gap-5'>
                                             <p className='fs-4 fw-bold'>{`${("-" + v?.Name) || ""}`}</p>
                                         </div>
                                     ))
