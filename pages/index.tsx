@@ -1,3 +1,4 @@
+import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -6,6 +7,9 @@ import { Form } from 'react-bootstrap'
 import { alcohol, bestprice, brand, charcoal, connects, customerreview, customerservice, deliverytime, email, email2, indomap, instagram, landing, mail, map, multi, panthenol, quality, telephone, whatsapp, whatsapp2 } from '../assets'
 import Carousels from '../components/Carousels'
 import FadeInSection from '../components/FadeInSection'
+import FadeInSectionX from '../components/FadeInSectionX'
+import FadeInSectionXR from '../components/FadeInSectionXR'
+import FadeInSectionY from '../components/FadeInSectionY'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import styles from '../styles/Home.module.css'
@@ -89,6 +93,7 @@ export default function Home() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin={''} />
         <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet"></link>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <div style={{ overflow: 'hidden' }}>
         {/* Hero */}
@@ -118,33 +123,44 @@ export default function Home() {
         </div>
 
         {/* Products Gallery */}
-        <FadeInSection>
-          <div className='bg-default' id="product">
-            <h1 className='text-center'>Products Gallery</h1>
-            <div className='d-flex justify-content-between px-5'>
-              {
-                products?.map((v: any) => (
-                  <div key={v}>
-                    <div className='box'>
-                      <Image style={{ borderRadius: '20px' }} src={v?.image} alt="products" width={300} height={200} />
-                    </div>
-                    <p className='text-center fs-5 fw-bold mt-2'>{v?.title?.toUpperCase()}</p>
-                  </div>
-                ))
-              }
-            </div>
+        <div className='bg-default' id="product">
+          <h1 className='text-center'>Products Gallery</h1>
+          <div className='d-flex justify-content-between px-5'>
+            {
+              products?.map((v: any, i: number) => (
+                <div key={v}>
+                  {
+                    i % 2 == 0 ?
+                      <FadeInSection>
+                        <div className='box'>
+                          <Image style={{ borderRadius: '20px' }} src={v?.image} alt="products" width={300} height={200} />
+                        </div>
+                        <p className='text-center fs-5 fw-bold mt-2'>{v?.title?.toUpperCase()}</p>
+                      </FadeInSection> :
+                      <FadeInSectionY>
+                        <div className='box'>
+                          <Image style={{ borderRadius: '20px' }} src={v?.image} alt="products" width={300} height={200} />
+                        </div>
+                        <p className='text-center fs-5 fw-bold mt-2'>{v?.title?.toUpperCase()}</p>
+                      </FadeInSectionY>
+                  }
+                </div>
+              ))
+            }
           </div>
-        </FadeInSection>
+        </div>
 
         {/* Info */}
-        <FadeInSection>
-          <div id='about' className='bg-default-2'>
+        <div id='about' className='bg-default-2'>
+          <FadeInSectionX>
             <p className='text-center' style={{ fontSize: 30 }}>
               <strong>PT. Multiverese Anugerah Chemindo</strong> is a company withhigh expertise in
               importing & distributing raw materials for cosmetic, food, and chemical industries.
             </p>
+          </FadeInSectionX>
+          <FadeInSectionXR>
             <p className='text-center text-purple'>We Provide :</p>
-            <div className='py-5'>
+            <div className='py-3'>
               <div className='d-flex justify-content-center gap-3'>
                 {
                   provides?.filter((v: any, i: number) => i < 3)?.map((val: any) => (
@@ -170,8 +186,8 @@ export default function Home() {
                 }
               </div>
             </div>
-          </div>
-        </FadeInSection>
+          </FadeInSectionXR>
+        </div>
 
         {/* Testimonial */}
         <FadeInSection>
@@ -188,7 +204,7 @@ export default function Home() {
                   }
                 </div>
               </div>
-              <div>
+              <div className='d-flex align-items-center g-2'>
                 <div className='box-testi'>
                   <p className='text-slide'>{testimonials[count]?.title}</p>
                   <p className='text-slide'>{testimonials[count]?.from}</p>
@@ -207,7 +223,7 @@ export default function Home() {
                   }}>
                     Previous
                   </a> */}
-                    <a className='text-primary' href='#next' onClick={() => {
+                    {/* <a className='text-primary' href='#next' onClick={() => {
                       if (count < testimonials?.length - 1) {
                         setCount(count + 1)
                         console.log(count, 'countes')
@@ -217,7 +233,40 @@ export default function Home() {
                       }
                     }}>
                       Next
-                    </a>
+                    </a> */}
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <button className='btn'
+                      onClick={() => {
+                        if (count < testimonials?.length - 1) {
+                          setCount(count + 1)
+                          console.log(count, 'countes')
+                          return
+                        } else {
+                          setCount(0)
+                        }
+                      }}
+                    >
+                      <KeyboardArrowUp fontSize={'large'} />
+                    </button>
+                  </div>
+
+                  <div>
+                    <button className='btn'
+                      onClick={() => {
+                        if (count < testimonials?.length - 1) {
+                          setCount(count + 1)
+                          console.log(count, 'countes')
+                          return
+                        } else {
+                          setCount(0)
+                        }
+                      }}
+                    >
+                      <KeyboardArrowDown fontSize={'large'} />
+                    </button>
                   </div>
                 </div>
               </div>
@@ -313,6 +362,6 @@ export default function Home() {
       <div>
         <Footer />
       </div>
-    </div>
+    </div >
   )
 }

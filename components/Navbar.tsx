@@ -17,7 +17,7 @@ export default function Navbar({ children }: any) {
         setupNav()
     },[])
     return (
-        <div className='z-2 pt-5 pe-5'>
+        <div className='z-2 pt-3 pe-5'>
             <ul className="nav justify-content-end">
                 <li className="nav-item">
                     <Link href={'/'}>
@@ -26,7 +26,7 @@ export default function Navbar({ children }: any) {
                 </li>
                 <li className="nav-item">
                     <Link href={'/about'}>
-                        <p className={names}>ABOUT</p>
+                        <p className={names}>ABOUT US</p>
                     </Link>
                 </li>
                 <li className="nav-item">
@@ -36,7 +36,7 @@ export default function Navbar({ children }: any) {
                 </li>
                 <li className="nav-item">
                     <Link href={'/contact'}>
-                        <p className={names}>CONTACT</p>
+                        <p className={names}>CONTACT US</p>
                     </Link>
                 </li>
             </ul>

@@ -1,12 +1,41 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import React from 'react'
-import { indomap } from '../../assets'
+import { bestprice, customerreview, customerservice, deliverytime, indomap, quality } from '../../assets'
 import FadeInSection from '../../components/FadeInSection'
+import FadeInSectionX from '../../components/FadeInSectionX'
+import FadeInSectionXR from '../../components/FadeInSectionXR'
 import Footer from '../../components/Footer'
 import Navbar from '../../components/Navbar'
 
 export default function index() {
+    const provides = [
+        {
+            id: 1,
+            title: 'High Quality Material',
+            icon: quality
+        },
+        {
+            id: 2,
+            title: 'On Time Delivery',
+            icon: deliverytime
+        },
+        {
+            id: 3,
+            title: 'Competitive Price',
+            icon: bestprice
+        },
+        {
+            id: 4,
+            title: 'Excelent Services & Solution',
+            icon: customerservice
+        },
+        {
+            id: 5,
+            title: 'Sourcing The Product That Customers Need',
+            icon: customerreview
+        },
+    ]
     return (
         <div>
             <Head>
@@ -20,6 +49,45 @@ export default function index() {
             <Navbar>
 
             </Navbar>
+            <div id='about' className='bg-default-2'>
+                <FadeInSectionX>
+                    <div className='mx-5'>
+                        <p className='text-center' style={{ fontSize: 30 }}>
+                            <strong>PT. Multiverese Anugerah Chemindo</strong> is a company withhigh expertise in
+                            importing & distributing raw materials for cosmetic, food, and chemical industries.
+                        </p>
+                    </div>
+                </FadeInSectionX>
+                <FadeInSectionXR>
+                    <p className='text-center text-purple'>We Provide :</p>
+                    <div className='py-3'>
+                        <div className='d-flex justify-content-center gap-3'>
+                            {
+                                provides?.filter((v: any, i: number) => i < 3)?.map((val: any) => (
+                                    <div key={val} className='box-provide'>
+                                        <div style={{ marginTop: -30 }}>
+                                            <Image alt='v' src={val?.icon} width={70} height={70} />
+                                        </div>
+                                        <p className='fs-5'>{val?.title}</p>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                        <div className='d-flex justify-content-center gap-3'>
+                            {
+                                provides?.filter((v: any, i: number) => i > 2)?.map((val: any) => (
+                                    <div key={val} className='box-provide'>
+                                        <div style={{ marginTop: -30 }}>
+                                            <Image alt='v' src={val?.icon} width={70} height={70} />
+                                        </div>
+                                        <p className='fs-5'>{val?.title}</p>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+                </FadeInSectionXR>
+            </div>
             <FadeInSection>
                 <div className='px-5'>
                     <div className='bg-default-2'>
