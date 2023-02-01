@@ -1,8 +1,104 @@
+import axios from 'axios'
 import Head from 'next/head'
-import React from 'react'
+import { useRouter } from 'next/router'
+import React, { useEffect, useState } from 'react'
+import Swal from 'sweetalert2'
 import Layout from '../../../components/Layout'
+import { Config } from '../../../config'
 
-export default function index() {
+export default function Content() {
+    const [toggle, setToggle] = useState<boolean>(false)
+    const [toggleData, setToggleData] = useState<any>()
+    const [contentData, setContentData] = useState<any>([])
+    const [payload, setPayload] = useState<any>()
+
+    const router = useRouter()
+
+    const handleChange = (e: any) => {
+        setPayload({ ...payload, [e.target.name]: e.target.value })
+    }
+
+    const getContent = async () => {
+        try {
+            const result = await axios.get(`${Config.base_url_api.base}/contents/`)
+            setContentData(result.data.result)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const save = async (e: any) => {
+        e.preventDefault()
+        const payloadData = {
+            ...payload
+        }
+        try {
+            const result = await axios.post(`${Config.base_url_api.base}/categories/`, payloadData)
+            Swal.fire({
+                text: 'Suceess Add Data',
+                icon: 'success'
+            })
+            setPayload({ name: '', notes: '' })
+            getContent()
+            setToggle(!toggle)
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                text: 'Internal Server Error! Please Wait...',
+                icon: 'error'
+            })
+            setToggle(!toggle)
+        }
+    }
+
+    const update = async (e: any) => {
+        e.preventDefault()
+        const payloadData = {
+            ...payload
+        }
+        try {
+            const result = await axios.patch(`${Config.base_url_api.base}/categories/?id=${toggleData?.ID}`, payloadData)
+            Swal.fire({
+                text: 'Suceess Update Data',
+                icon: 'success'
+            })
+            setPayload({ name: '', notes: '' })
+            getContent()
+            setToggle(!toggle)
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                text: 'Internal Server Error! Please Wait...',
+                icon: 'error'
+            })
+            setToggle(!toggle)
+        }
+    }
+
+    const remove = async (e: any) => {
+        e.preventDefault()
+        try {
+            const result = await axios.delete(`${Config.base_url_api.base}/categories/${toggleData?.ID}`)
+            Swal.fire({
+                text: 'Suceess Delete Data',
+                icon: 'success'
+            })
+            setPayload({ name: '', notes: '' })
+            getContent()
+            setToggle(!toggle)
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                text: 'Internal Server Error! Please Wait...',
+                icon: 'error'
+            })
+            setToggle(!toggle)
+        }
+    }
+
+    useEffect(() => {
+        getContent()
+    }, [])
     return (
         <div>
             <Head>
@@ -18,29 +114,48 @@ export default function index() {
                     <div>
                         <h3>Konten</h3>
                     </div>
+                    <div className='pt-5 pb-2'>
+                        <button onClick={() => {
+                            setToggle(!toggle)
+                            // setKeys('create')
+                            setToggleData(null)
+                        }} className='btn btn-primary'>
+                            Tambah Konten
+                        </button>
+                    </div>
                     <table className='table table-stripper'>
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama</th>
-                                <th>Email</th>
-                                <th>No Telepon</th>
-                                <th>Status</th>
+                                <th>Judul</th>
+                                <th>Gambar</th>
+                                <th>Keterangan</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Hilmi</td>
-                                <td>hilmi@gmail.com</td>
-                                <td>085700330044</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a className='text-success'>Edit</a>
-                                    <a className='text-danger ms-4'>Hapus</a>
-                                </td>
-                            </tr>
+                            {
+                                contentData?.length > 0 ?
+                                    contentData?.map((v: any, i: number) =>
+                                        <>
+                                            <tr key={i}>
+                                                <td>{i + 1}</td>
+                                                <td>{v?.Title}</td>
+                                                <td><a className='text-primary' href={v?.Image} target={'_blank'} rel='noreferrer' >Lihat</a></td>
+                                                <td>{v?.Notes}</td>
+                                                <td>
+                                                    <a className='text-success'>Edit</a>
+                                                    <a className='text-danger ms-4'>Hapus</a>
+                                                </td>
+                                            </tr>
+                                        </>
+                                    )
+                                    : <>
+                                        <tr>
+                                            <td colSpan={5}>Data tidak ditemukan</td>
+                                        </tr>
+                                    </>
+                            }
                         </tbody>
                     </table>
                 </div>
